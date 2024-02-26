@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("shortingAlgorithmsVizualizer_wpf")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+76ad583cf11a86c72dd10931d839b5c3f9b09352")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("shortingAlgorithmsVizualizer_wpf")]
 [assembly: System.Reflection.AssemblyTitleAttribute("shortingAlgorithmsVizualizer_wpf")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

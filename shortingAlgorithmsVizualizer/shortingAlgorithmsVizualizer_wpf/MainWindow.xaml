@@ -7,12 +7,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Menu>
-            <MenuItem Header="Start algorithm"/>
-            <MenuItem Header="Choose sorting algorithm">
-                <MenuItem Header="QuickSort"/>
-            </MenuItem>
-            <TextBox Text="Write the integer array here in format: &quot;1,2,3,4,5&quot; "/>
-        </Menu>
+
     </Grid>
 </Window>
