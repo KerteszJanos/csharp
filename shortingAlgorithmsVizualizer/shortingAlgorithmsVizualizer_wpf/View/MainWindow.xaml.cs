@@ -20,5 +20,21 @@ namespace shortingAlgorithmsVizualizer_wpf.View
         {
             InitializeComponent();
         }
+
+        /// <summary>
+        /// Responsible for the placeholder that placed in the arrayInputTextbox.
+        /// </summary>
+        //(I put it here because the model or viewmodel doesn't need to know about this change)
+        private void OnArrayInputTextboxTextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (arrayInputTextbox.Text != "")
+            {
+                arrayInputTextboxPlaceholderLabel.Content = "";
+            }
+            else
+            {
+                arrayInputTextboxPlaceholderLabel.Content = "Write the integer array here in format: \"1,2,3,4,5\"";
+            }
+        }
     }
 }
