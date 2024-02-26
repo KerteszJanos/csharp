@@ -1,0 +1,27 @@
+﻿<Window x:Class="shortingAlgorithmsVizualizer_wpf.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:shortingAlgorithmsVizualizer_wpf"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Menu VerticalAlignment="Top">
+            <Menu.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <DockPanel HorizontalAlignment="Stretch"/>
+                </ItemsPanelTemplate>
+            </Menu.ItemsPanel>
+            <MenuItem Header="Start algorithm"/>
+            <MenuItem Header="Choose sorting algorithm">
+                <MenuItem Header="QuickSort"/>
+            </MenuItem>
+            <Grid>
+                <TextBox x:Name="arrayInputTextbox" Width="300" TextChanged="OnArrayInputTextboxTextChanged" />
+                <Label x:Name="arrayInputTextboxPlaceholderLabel" Content="Write the integer array here in format: &quot;1,2,3,4,5&quot;" Foreground="Gray" Margin="0,0,0,0" IsHitTestVisible="False"/>
+            </Grid>
+            <MenuItem Header="Exit" HorizontalAlignment="Right"></MenuItem>
+        </Menu>
+    </Grid>
+</Window>
