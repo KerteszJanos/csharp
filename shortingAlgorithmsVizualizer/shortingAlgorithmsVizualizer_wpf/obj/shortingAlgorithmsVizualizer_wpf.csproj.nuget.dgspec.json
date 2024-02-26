@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Jani\\source\\repos\\shortingAlgorithmsVizualizer\\shortingAlgorithmsVizualizer_wpf\\shortingAlgorithmsVizualizer_wpf.csproj": {}
+    "C:\\Users\\Jani\\Desktop\\Saját projectek\\csharp\\shortingAlgorithmsVizualizer\\shortingAlgorithmsVizualizer_wpf\\shortingAlgorithmsVizualizer_wpf.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Jani\\source\\repos\\shortingAlgorithmsVizualizer\\shortingAlgorithmsVizualizer_wpf\\shortingAlgorithmsVizualizer_wpf.csproj": {
+    "C:\\Users\\Jani\\Desktop\\Saját projectek\\csharp\\shortingAlgorithmsVizualizer\\shortingAlgorithmsVizualizer_wpf\\shortingAlgorithmsVizualizer_wpf.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Jani\\source\\repos\\shortingAlgorithmsVizualizer\\shortingAlgorithmsVizualizer_wpf\\shortingAlgorithmsVizualizer_wpf.csproj",
+        "projectUniqueName": "C:\\Users\\Jani\\Desktop\\Saját projectek\\csharp\\shortingAlgorithmsVizualizer\\shortingAlgorithmsVizualizer_wpf\\shortingAlgorithmsVizualizer_wpf.csproj",
         "projectName": "shortingAlgorithmsVizualizer_wpf",
-        "projectPath": "C:\\Users\\Jani\\source\\repos\\shortingAlgorithmsVizualizer\\shortingAlgorithmsVizualizer_wpf\\shortingAlgorithmsVizualizer_wpf.csproj",
+        "projectPath": "C:\\Users\\Jani\\Desktop\\Saját projectek\\csharp\\shortingAlgorithmsVizualizer\\shortingAlgorithmsVizualizer_wpf\\shortingAlgorithmsVizualizer_wpf.csproj",
         "packagesPath": "C:\\Users\\Jani\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Jani\\source\\repos\\shortingAlgorithmsVizualizer\\shortingAlgorithmsVizualizer_wpf\\obj\\",
+        "outputPath": "C:\\Users\\Jani\\Desktop\\Saját projectek\\csharp\\shortingAlgorithmsVizualizer\\shortingAlgorithmsVizualizer_wpf\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Jani\\AppData\\Roaming\\NuGet\\NuGet.Config",
