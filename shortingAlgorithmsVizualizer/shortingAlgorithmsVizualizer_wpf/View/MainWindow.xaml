@@ -13,7 +13,7 @@
                     <DockPanel HorizontalAlignment="Stretch"/>
                 </ItemsPanelTemplate>
             </Menu.ItemsPanel>
-            <MenuItem Header="Start algorithm"/>
+            <MenuItem Command="" Header="Start algorithm"/>
             <MenuItem Header="Choose sorting algorithm">
                 <MenuItem Header="QuickSort"/>
             </MenuItem>
