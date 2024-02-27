@@ -21,7 +21,7 @@
                 <TextBox x:Name="arrayInputTextbox" Width="300" TextChanged="OnArrayInputTextboxTextChanged" />
                 <Label x:Name="arrayInputTextboxPlaceholderLabel" Content="Write the integer array here in format: &quot;1,2,3,4,5&quot;" IsHitTestVisible="False"/>
             </Grid>
-            <MenuItem Header="Exit" HorizontalAlignment="Right"></MenuItem>
+            <MenuItem Command="{Binding ExitCommand}" Header="Exit" HorizontalAlignment="Right"></MenuItem>
         </Menu>
     </Grid>
 </Window>

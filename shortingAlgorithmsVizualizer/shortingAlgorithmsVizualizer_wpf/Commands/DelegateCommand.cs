@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace shortingAlgorithmsVizualizer_wpf.Commands
 {
-    public class Commands : ICommand
+    public class DelegateCommand : ICommand
     {
 
         #region propertis/fields
@@ -18,7 +18,7 @@ namespace shortingAlgorithmsVizualizer_wpf.Commands
         #endregion
 
         #region constructors
-        public Commands(Action<object> ExecuteMethod, Predicate<object> CanExecuteMethod) //gets to method
+        public DelegateCommand(Action<object> ExecuteMethod, Predicate<object> CanExecuteMethod) //gets to method
         {
             ExecuteAction = ExecuteMethod;
             CanExecutePredicate = CanExecuteMethod;
@@ -26,21 +26,21 @@ namespace shortingAlgorithmsVizualizer_wpf.Commands
         #endregion
 
         #region public methods
-        public bool CanExecute(object? parameter)
+        public bool CanExecute(object? parameter) //function will called when a command binding appear
         {
-            if (parameter == null)
-            {
-                return false;
-            }
+            //if (parameter == null) //parameter is always null here unless we set CommandParameter in UI, but we fine with that
+            //{
+            //    return false;
+            //}
             return CanExecutePredicate(parameter);
         }
 
         public void Execute(object? parameter)
         {
-            if (parameter != null)
-            {
+            //if (parameter != null)
+            //{
                 ExecuteAction(parameter);
-            }
+            //}
         }
         #endregion
     }
