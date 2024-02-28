@@ -3,6 +3,7 @@ using sortingAlgorithmsVizualizer_wpf.ViewModel;
 using System.Configuration;
 using System.Data;
 using System.Windows;
+using sortingAlgorithmsVizualizer_classLib.Model;
 
 namespace sortingAlgorithmsVizualizer_wpf
 {
@@ -11,7 +12,7 @@ namespace sortingAlgorithmsVizualizer_wpf
     /// </summary>
     public partial class App : Application
     {
-        //private MainModel _model = null!;
+        private MainModel _model = null!;
         private MainViewModel _viewModel = null!;
         private MainWindow _view = null!;
 
@@ -23,9 +24,10 @@ namespace sortingAlgorithmsVizualizer_wpf
         private void App_Startup(object sender, StartupEventArgs e)
         {
             // modell definition
+            _model = new MainModel();
 
             // viewmodell definition
-            _viewModel = new MainViewModel(/*_main*/);
+            _viewModel = new MainViewModel(_model);
             _viewModel.ExitEvent += viewModel_Exit;
 
             //view definition

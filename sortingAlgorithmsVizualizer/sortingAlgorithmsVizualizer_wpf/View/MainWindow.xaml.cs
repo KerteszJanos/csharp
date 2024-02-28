@@ -16,11 +16,14 @@ namespace sortingAlgorithmsVizualizer_wpf.View
     /// </summary>
     public partial class MainWindow : Window
     {
+        #region constructors
         public MainWindow()
         {
             InitializeComponent();
         }
+        #endregion
 
+        #region private methods
         /// <summary>
         /// Responsible for the placeholder that placed in the arrayInputTextbox.
         /// </summary>
@@ -33,8 +36,9 @@ namespace sortingAlgorithmsVizualizer_wpf.View
             }
             else
             {
-                arrayInputTextboxPlaceholderLabel.Content = "Write the integer array here in format: \"1,2,3,4,5\"";
+                arrayInputTextboxPlaceholderLabel.Content = "Write the integer array here in format: 1,2,3,4,5";
             }
         }
+        #endregion
     }
 }

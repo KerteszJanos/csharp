@@ -13,13 +13,14 @@
                     <DockPanel HorizontalAlignment="Stretch"/>
                 </ItemsPanelTemplate>
             </Menu.ItemsPanel>
-            <MenuItem Command="" Header="Start algorithm"/>
-            <MenuItem Header="Choose sorting algorithm">
-                <MenuItem Header="QuickSort"/>
+            <MenuItem Command="{Binding Start_Stop_AlgorithmCommand}" CommandParameter="{Binding Text, ElementName=arrayInputTextbox}" Header="Start algorithm"/>
+            <MenuItem Header="Choose sorting algorithm (QuickSort)">
+                <MenuItem Command="{Binding SetAlgorithmToCommand}" CommandParameter="QuickSort" Header="QuickSort"/>
+                <MenuItem Command="{Binding SetAlgorithmToCommand}" CommandParameter="MergeSort" Header="MergeSort"/>
             </MenuItem>
             <Grid>
                 <TextBox x:Name="arrayInputTextbox" Width="300" TextChanged="OnArrayInputTextboxTextChanged" />
-                <Label x:Name="arrayInputTextboxPlaceholderLabel" Content="Write the integer array here in format: &quot;1,2,3,4,5&quot;" IsHitTestVisible="False"/>
+                <Label x:Name="arrayInputTextboxPlaceholderLabel" Content="Write the integer array here in format: 1,2,3,4,5" IsHitTestVisible="False"/>
             </Grid>
             <MenuItem Command="{Binding ExitCommand}" Header="Exit" HorizontalAlignment="Right"></MenuItem>
         </Menu>

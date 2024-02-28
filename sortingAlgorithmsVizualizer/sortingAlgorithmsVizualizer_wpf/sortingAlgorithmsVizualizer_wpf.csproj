@@ -8,4 +8,8 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\sortingAlgorithmsVizualizer_classLib\sortingAlgorithmsVizualizer_classLib.csproj" />
+  </ItemGroup>
+
 </Project>

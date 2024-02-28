@@ -1,0 +1,17 @@
+//algoritmus választás gomb változtatása data bindingel modelben lévő field alapján (vagy csak közvetlen használjuk a viewmodellban)
+
+public bool InputListInAGoodFormat(string inputList) //if the string is "" returns false
+{
+	return true; //do the logic
+}
+
+//ObservationCollection amit követ a view
+
+//kitalálni hogy is működjön a rendezés maga (timer?)
+
+private void Start_Stop_Algorithm(object obj)
+{
+    //_model.StartAlgorithm();
+}
+
+//start stop gomb váltakozása

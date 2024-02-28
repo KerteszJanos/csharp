@@ -1,4 +1,5 @@
-﻿using sortingAlgorithmsVizualizer_wpf.Commands;
+﻿using sortingAlgorithmsVizualizer_classLib.Model;
+using sortingAlgorithmsVizualizer_wpf.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,28 +11,56 @@ namespace sortingAlgorithmsVizualizer_wpf.ViewModel
 {
     public class MainViewModel
     {
-        #region Propertis
+        #region Properties
+        private readonly MainModel _model;
 
         //Commands
         public ICommand ExitCommand { get; set; }
+        public ICommand Start_Stop_AlgorithmCommand { get; set; }
+        public ICommand SetAlgorithmToCommand { get; set; }
         #endregion
 
         #region Constructors
-        public MainViewModel()
+        public MainViewModel(MainModel model) //dependency injection
         {
+            _model = model;
+
+            Start_Stop_AlgorithmCommand = new DelegateCommand(Start_Stop_Algorithm, CanStart_Stop_Algorithm);
+            SetAlgorithmToCommand = new DelegateCommand(SetAlgorithmTo, CanSetAlgorithmTo);
             ExitCommand = new DelegateCommand(Exit, CanExit);
         }
         #endregion
 
         #region Command methods
+        private void Exit(object obj) //the logic what we want to execute when the command is invoked
+        {
+            OnExitEvent();
+        }
         private bool CanExit(object obj)
         {
             return true;
         }
 
-        private void Exit(object obj) //the logic what we want to execute when the command is invoked
+        private void Start_Stop_Algorithm(object obj)
         {
-            OnExitEvent();
+            //_model.StartAlgorithm();
+        }
+        private bool CanStart_Stop_Algorithm(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            return _model.InputListInAGoodFormat(obj.ToString()!);
+        }
+
+        private void SetAlgorithmTo(object obj)
+        {
+            _model.SetAlgorithmTo(obj.ToString()!);
+        }
+        private bool CanSetAlgorithmTo(object obj)
+        {
+            return true;
         }
         #endregion
 

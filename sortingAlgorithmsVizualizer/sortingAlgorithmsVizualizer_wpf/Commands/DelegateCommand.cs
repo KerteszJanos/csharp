@@ -10,7 +10,7 @@ namespace sortingAlgorithmsVizualizer_wpf.Commands
     public class DelegateCommand : ICommand
     {
 
-        #region propertis/fields
+        #region properties/fields
         public event EventHandler? CanExecuteChanged;
 
         private Action<object> ExecuteAction { get; set; } //a generic delegate that can get a function which has an object parameter, return a value that is void
