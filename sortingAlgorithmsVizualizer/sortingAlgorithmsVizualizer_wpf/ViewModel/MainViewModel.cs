@@ -3,16 +3,18 @@ using sortingAlgorithmsVizualizer_wpf.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace sortingAlgorithmsVizualizer_wpf.ViewModel
 {
-    public class MainViewModel
+    public class MainViewModel : ViewModelBase
     {
-        #region Properties
+        #region Properties/fields
         private readonly MainModel _model;
+        public string modelSortingTypeAsMenuItemHeader { get; set; }
 
         //Commands
         public ICommand ExitCommand { get; set; }
@@ -24,6 +26,9 @@ namespace sortingAlgorithmsVizualizer_wpf.ViewModel
         public MainViewModel(MainModel model) //dependency injection
         {
             _model = model;
+            _model.SortingTypeChanged += modelSortingTypeChanged;
+            modelSortingTypeAsMenuItemHeader = "Choose sorting algorythm (QuickSort)";
+            OnPropertyChanged(nameof(modelSortingTypeAsMenuItemHeader));
 
             Start_Stop_AlgorithmCommand = new DelegateCommand(Start_Stop_Algorithm, CanStart_Stop_Algorithm);
             SetAlgorithmToCommand = new DelegateCommand(SetAlgorithmTo, CanSetAlgorithmTo);
@@ -43,7 +48,7 @@ namespace sortingAlgorithmsVizualizer_wpf.ViewModel
 
         private void Start_Stop_Algorithm(object obj)
         {
-            //_model.StartAlgorithm();
+            _model.StartAlgorithm(obj.ToString()!);
         }
         private bool CanStart_Stop_Algorithm(object obj)
         {
@@ -61,6 +66,14 @@ namespace sortingAlgorithmsVizualizer_wpf.ViewModel
         private bool CanSetAlgorithmTo(object obj)
         {
             return true;
+        }
+        #endregion
+
+        #region model event handlers
+        private void modelSortingTypeChanged(object? sender, string e)
+        {
+            modelSortingTypeAsMenuItemHeader = $"Choose sorting algorythm ({e})";
+            OnPropertyChanged(nameof(modelSortingTypeAsMenuItemHeader));
         }
         #endregion
 

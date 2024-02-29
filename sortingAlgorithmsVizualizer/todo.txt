@@ -4,6 +4,20 @@ public bool InputListInAGoodFormat(string inputList) //if the string is "" retur
 {
 	return true; //do the logic
 }
+-------------------------------------------------------------------------------------------------------------------------------
+MEGÉRTENI MÉRT KELL A TOSTRING
+        public void StartAlgorithm(string inputList)
+        {
+            list.Clear();
+            string[] inputLists = inputList.Split(',');
+            for (int i = 0; i < inputLists.Length; i++)
+            {
+                list.Add(inputList[i]); //some reaaly weird behavior
+            }
+            list.Sort();
+        }
+
+Egyenlőre annyi hogy kirajzolja a táblára a kívánt listát
 
 //ObservationCollection amit követ a view
 
@@ -15,3 +29,4 @@ private void Start_Stop_Algorithm(object obj)
 }
 
 //start stop gomb váltakozása
+

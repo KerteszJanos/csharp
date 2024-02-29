@@ -14,7 +14,7 @@
                 </ItemsPanelTemplate>
             </Menu.ItemsPanel>
             <MenuItem Command="{Binding Start_Stop_AlgorithmCommand}" CommandParameter="{Binding Text, ElementName=arrayInputTextbox}" Header="Start algorithm"/>
-            <MenuItem Header="Choose sorting algorithm (QuickSort)">
+            <MenuItem Header="{Binding modelSortingTypeAsMenuItemHeader}">
                 <MenuItem Command="{Binding SetAlgorithmToCommand}" CommandParameter="QuickSort" Header="QuickSort"/>
                 <MenuItem Command="{Binding SetAlgorithmToCommand}" CommandParameter="MergeSort" Header="MergeSort"/>
             </MenuItem>
