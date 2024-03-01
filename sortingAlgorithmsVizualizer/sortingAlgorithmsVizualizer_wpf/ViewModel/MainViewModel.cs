@@ -2,6 +2,7 @@
 using sortingAlgorithmsVizualizer_wpf.Commands;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Text;
@@ -16,6 +17,8 @@ namespace sortingAlgorithmsVizualizer_wpf.ViewModel
         private readonly MainModel _model;
         public string modelSortingTypeAsMenuItemHeader { get; set; }
 
+        public ObservableCollection<int> modelList { get; set; }
+
         //Commands
         public ICommand ExitCommand { get; set; }
         public ICommand Start_Stop_AlgorithmCommand { get; set; }
@@ -29,6 +32,10 @@ namespace sortingAlgorithmsVizualizer_wpf.ViewModel
             _model.SortingTypeChanged += modelSortingTypeChanged;
             modelSortingTypeAsMenuItemHeader = "Choose sorting algorythm (QuickSort)";
             OnPropertyChanged(nameof(modelSortingTypeAsMenuItemHeader));
+
+            modelList = new ObservableCollection<int>();
+            _model.ListItemChanged += modelListItemChanged;
+
 
             Start_Stop_AlgorithmCommand = new DelegateCommand(Start_Stop_Algorithm, CanStart_Stop_Algorithm);
             SetAlgorithmToCommand = new DelegateCommand(SetAlgorithmTo, CanSetAlgorithmTo);
@@ -74,6 +81,11 @@ namespace sortingAlgorithmsVizualizer_wpf.ViewModel
         {
             modelSortingTypeAsMenuItemHeader = $"Choose sorting algorythm ({e})";
             OnPropertyChanged(nameof(modelSortingTypeAsMenuItemHeader));
+        }
+
+        private void modelListItemChanged(object? sender, List<int> e)
+        {
+            throw new NotImplementedException();
         }
         #endregion
 

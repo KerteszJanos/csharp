@@ -28,7 +28,7 @@ namespace sortingAlgorithmsVizualizer_classLib.Model
             bool isComma = true;
 
             int i = 0;
-            while(i < inputList.Length && (Char.IsNumber(inputList[i]) || inputList[i] == ','))
+            while (i < inputList.Length && (Char.IsNumber(inputList[i]) || inputList[i] == ','))
             {
                 if (inputList[i] == ',')
                 {
@@ -47,7 +47,7 @@ namespace sortingAlgorithmsVizualizer_classLib.Model
                 }
                 i++;
             }
-            return (i <= inputList.Length) && !isComma ;
+            return (i <= inputList.Length) && !isComma;
         }
         public void SetAlgorithmTo(string sortingType)
         {
@@ -60,18 +60,32 @@ namespace sortingAlgorithmsVizualizer_classLib.Model
             string[] inputLists = inputList.Split(',');
             for (int i = 0; i < inputLists.Length; i++)
             {
-                list.Add(int.Parse(inputList[i])); //some reaaly weird behaviour
+                list.Add(int.Parse(inputLists[i]));
             }
-            list.Sort();
+            OnListItemChanged(new ListItemChangedEventArgs()); 
+            switch (sortingType)
+            {
+                case "QuickSort":
+                    break;
+                case "MergreSort":
+                    break;
+                default:
+                    break;
+            }
         }
         #endregion
 
         #region events/event methods
         public event EventHandler<string>? SortingTypeChanged;
+        public event EventHandler<ListItemChangedEventArgs>? ListItemChanged;
 
         private void onSortingTypeChanged(string sortingType)
         {
             SortingTypeChanged!.Invoke(this, sortingType);
+        }
+        private void OnListItemChanged(ListItemChangedEventArgs e)
+        {
+            ListItemChanged!.Invoke(this,e);
         }
         #endregion
     }
