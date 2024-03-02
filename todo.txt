@@ -4,7 +4,7 @@ public bool InputListInAGoodFormat(string inputList) //if the string is "" retur
 {
 	return true; //do the logic
 }
------------------------------------------------------------------------------------------------------------------------------
+
 Egyenlőre annyi hogy kirajzolja a táblára a kívánt listát:
 A lista inicializálására kell külön modelbeli event? (SZERINTEM igen)
 VisualListItem
@@ -17,6 +17,8 @@ VisualListItem
 
 
 //ObservationCollection amit követ a view
+
+-----------------------------------------------------------------------------------------------------------------------------
 
 //kitalálni hogy is működjön a rendezés maga (2 elem cseréjének eventje)
 

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace sortingAlgorithmsVizualizer_classLib
+namespace sortingAlgorithmsVisualizer_classLib.Model
 {
     public class ListItemChangedEventArgs : EventArgs
     {

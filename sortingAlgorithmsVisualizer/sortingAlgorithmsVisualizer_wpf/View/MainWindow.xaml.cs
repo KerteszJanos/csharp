@@ -9,7 +9,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace sortingAlgorithmsVizualizer_wpf.View
+namespace sortingAlgorithmsVisualizer_wpf.View
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

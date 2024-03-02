@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace sortingAlgorithmsVizualizer_wpf.Commands
+namespace sortingAlgorithmsVisualizer_wpf.Commands
 {
     public class DelegateCommand : ICommand
     {

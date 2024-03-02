@@ -1,26 +1,31 @@
-﻿using sortingAlgorithmsVizualizer_wpf.View;
-using sortingAlgorithmsVizualizer_wpf.ViewModel;
+﻿using sortingAlgorithmsVisualizer_classLib.Model;
+using sortingAlgorithmsVisualizer_wpf.View;
+using sortingAlgorithmsVisualizer_wpf.ViewModel;
 using System.Configuration;
 using System.Data;
 using System.Windows;
-using sortingAlgorithmsVizualizer_classLib.Model;
 
-namespace sortingAlgorithmsVizualizer_wpf
+namespace sortingAlgorithmsVisualizer_wpf
 {
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
     public partial class App : Application
     {
+        #region properties / fileds
         private MainModel _model = null!;
         private MainViewModel _viewModel = null!;
         private MainWindow _view = null!;
+        #endregion
 
+        #region constructors
         public App()
         {
             Startup += new StartupEventHandler(App_Startup);
         }
+        #endregion
 
+        #region private methods
         private void App_Startup(object sender, StartupEventArgs e)
         {
             // modell definition
@@ -35,9 +40,11 @@ namespace sortingAlgorithmsVizualizer_wpf
             _view.DataContext = _viewModel; //set the bindings source to the viewmodell
             _view.Show();
         }
+        #endregion
 
         #region EventHandlers
         //model EventHandlers
+
 
         //viewModel EventHandlers
         private void viewModel_Exit(object? sender, EventArgs e)
@@ -46,6 +53,7 @@ namespace sortingAlgorithmsVizualizer_wpf
         }
 
         //view EventHandlers
+
         #endregion
     }
 

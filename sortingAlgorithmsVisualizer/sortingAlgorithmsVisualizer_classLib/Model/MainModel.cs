@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace sortingAlgorithmsVizualizer_classLib.Model
+namespace sortingAlgorithmsVisualizer_classLib.Model
 {
     public class MainModel
     {
@@ -62,7 +62,7 @@ namespace sortingAlgorithmsVizualizer_classLib.Model
             {
                 list.Add(int.Parse(inputLists[i]));
             }
-            OnListItemChanged(new ListItemChangedEventArgs()); 
+            OnListInInitialised(list);
             switch (sortingType)
             {
                 case "QuickSort":
@@ -77,15 +77,20 @@ namespace sortingAlgorithmsVizualizer_classLib.Model
 
         #region events/event methods
         public event EventHandler<string>? SortingTypeChanged;
+        public event EventHandler<List<int>>? ListInInitialised;
         public event EventHandler<ListItemChangedEventArgs>? ListItemChanged;
 
         private void onSortingTypeChanged(string sortingType)
         {
             SortingTypeChanged!.Invoke(this, sortingType);
         }
+        private void OnListInInitialised(List<int> list)
+        {
+            ListInInitialised!.Invoke(this, list);
+        }
         private void OnListItemChanged(ListItemChangedEventArgs e)
         {
-            ListItemChanged!.Invoke(this,e);
+            ListItemChanged!.Invoke(this, e);
         }
         #endregion
     }
