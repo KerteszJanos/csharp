@@ -1,15 +1,14 @@
-﻿using sortingAlgorithmsVizualizer_classLib.Model;
-using sortingAlgorithmsVizualizer_wpf.Commands;
+﻿using sortingAlgorithmsVisualizer_classLib.Model;
+using sortingAlgorithmsVisualizer_wpf.Commands;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace sortingAlgorithmsVizualizer_wpf.ViewModel
+namespace sortingAlgorithmsVisualizer_wpf.ViewModel
 {
     public class MainViewModel : ViewModelBase
     {
@@ -17,7 +16,7 @@ namespace sortingAlgorithmsVizualizer_wpf.ViewModel
         private readonly MainModel _model;
         public string modelSortingTypeAsMenuItemHeader { get; set; }
 
-        public ObservableCollection<int> modelList { get; set; }
+        public ObservableCollection<VisualListItem> modelList { get; set; }
 
         //Commands
         public ICommand ExitCommand { get; set; }
@@ -33,7 +32,8 @@ namespace sortingAlgorithmsVizualizer_wpf.ViewModel
             modelSortingTypeAsMenuItemHeader = "Choose sorting algorythm (QuickSort)";
             OnPropertyChanged(nameof(modelSortingTypeAsMenuItemHeader));
 
-            modelList = new ObservableCollection<int>();
+            modelList = new ObservableCollection<VisualListItem>();
+            _model.ListInInitialised += modelListInInitialised;
             _model.ListItemChanged += modelListItemChanged;
 
 
@@ -83,7 +83,18 @@ namespace sortingAlgorithmsVizualizer_wpf.ViewModel
             OnPropertyChanged(nameof(modelSortingTypeAsMenuItemHeader));
         }
 
-        private void modelListItemChanged(object? sender, List<int> e)
+        private void modelListInInitialised(object? sender, List<int> e)
+        {
+            modelList.Clear();
+            int max = e.Max();
+            for (int i = 0; i < e.Count; i++)
+            {
+                modelList.Add(new VisualListItem(e[i], (400 * ((double)e[i] / max)) + 5)); //405 is the hight of the ItemsControl panel
+
+            }
+        }
+
+        private void modelListItemChanged(object? sender, ListItemChangedEventArgs e)
         {
             throw new NotImplementedException();
         }

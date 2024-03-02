@@ -6,10 +6,11 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace sortingAlgorithmsVizualizer_wpf.ViewModel
+namespace sortingAlgorithmsVisualizer_wpf.ViewModel
 {
     public class ViewModelBase : INotifyPropertyChanged
     {
+        #region events / event methods
         public event PropertyChangedEventHandler? PropertyChanged;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
@@ -19,5 +20,6 @@ namespace sortingAlgorithmsVizualizer_wpf.ViewModel
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
+        #endregion
     }
 }

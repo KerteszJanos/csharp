@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\sortingAlgorithmsVizualizer_classLib\sortingAlgorithmsVizualizer_classLib.csproj" />
+    <ProjectReference Include="..\sortingAlgorithmsVisualizer_classLib\sortingAlgorithmsVisualizer_classLib.csproj" />
   </ItemGroup>
 
 </Project>

@@ -6,20 +6,23 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace sortingAlgorithmsVizualizer_wpf.ViewModel
+namespace sortingAlgorithmsVisualizer_wpf.ViewModel
 {
-    class VisualListItem : INotifyPropertyChanged
+    public class VisualListItem : INotifyPropertyChanged
     {
         #region properties / fields
         public int value { get; set; }
-        //maybe index?
-        //maybe hight (it can scale depends with the maximum elements)
+        public double height { get; set; }
+        //maybe color or context
         #endregion
 
         #region constructors
-        public VisualListItem()
+        public VisualListItem(int v, double h)
         {
-            //some logic       
+            value = v;
+            OnPropertyChanged(nameof(v));
+            height = h;
+            OnPropertyChanged(nameof(h));
         }
         #endregion
 
