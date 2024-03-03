@@ -8,17 +8,16 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
 {
     public class MainModel
     {
-
         #region properties/fields
         public List<int> list { get; set; }
-        private string sortingType; //set QuickSort default in ctor
+        private string sortingType; //set InsertionSort default in ctor
         #endregion
 
         #region constructors
         public MainModel()
         {
             list = new List<int>();
-            sortingType = String.Empty;
+            sortingType = "InsertionSort";
         }
         #endregion
 
@@ -54,7 +53,7 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
             this.sortingType = sortingType;
             onSortingTypeChanged(sortingType);
         }
-        public void StartAlgorithm(string inputList)
+        public async void StartAlgorithm(string inputList)
         {
             list.Clear();
             string[] inputLists = inputList.Split(',');
@@ -62,12 +61,16 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
             {
                 list.Add(int.Parse(inputLists[i]));
             }
-            OnListInInitialised(list);
+            OnListInitialised(list);
             switch (sortingType)
             {
-                case "QuickSort":
+                case "InsertionSort":
+                    await Task.Delay(500);
+                    await InsertionSort(list);
                     break;
-                case "MergreSort":
+                case "BubbleSort":
+                    await Task.Delay(500);
+                    await BubbleSort(list);
                     break;
                 default:
                     break;
@@ -75,18 +78,59 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
         }
         #endregion
 
+        #region private methods
+        private async Task<List<int>> InsertionSort(List<int> inputArray)
+        {
+            for (int i = 0; i < inputArray.Count - 1; i++)
+            {
+                for (int j = i + 1; j > 0; j--)
+                {
+                    OnListItemChanged(new ListItemChangedEventArgs(j - 1, j, (inputArray[j - 1] > inputArray[j])));
+                    if (inputArray[j - 1] > inputArray[j])
+                    {
+                        int temp = inputArray[j - 1];
+                        inputArray[j - 1] = inputArray[j];
+                        inputArray[j] = temp;
+                    }
+                    await Task.Delay(100);
+                }
+            }
+            return inputArray;
+        }
+        private async Task<List<int>> BubbleSort(List<int> inputArray)
+        {
+            int n = inputArray.Count;
+            for (int i = 0; i < n - 1; i++)
+            {
+
+                for (int j = 0; j < n - i - 1; j++)
+                {
+                    OnListItemChanged(new ListItemChangedEventArgs(j, j + 1, (inputArray[j] > inputArray[j + 1])));
+                    if (inputArray[j] > inputArray[j + 1])
+                    {
+                        int tempVar = inputArray[j];
+                        inputArray[j] = inputArray[j + 1];
+                        inputArray[j + 1] = tempVar;
+                    }
+                    await Task.Delay(100);
+                }
+            }
+            return inputArray;
+        }
+        #endregion
+
         #region events/event methods
         public event EventHandler<string>? SortingTypeChanged;
-        public event EventHandler<List<int>>? ListInInitialised;
+        public event EventHandler<List<int>>? ListInitialised;
         public event EventHandler<ListItemChangedEventArgs>? ListItemChanged;
 
         private void onSortingTypeChanged(string sortingType)
         {
             SortingTypeChanged!.Invoke(this, sortingType);
         }
-        private void OnListInInitialised(List<int> list)
+        private void OnListInitialised(List<int> list)
         {
-            ListInInitialised!.Invoke(this, list);
+            ListInitialised!.Invoke(this, list);
         }
         private void OnListItemChanged(ListItemChangedEventArgs e)
         {

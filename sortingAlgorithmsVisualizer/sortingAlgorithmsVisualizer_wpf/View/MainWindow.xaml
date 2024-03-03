@@ -15,8 +15,8 @@
             </Menu.ItemsPanel>
             <MenuItem Command="{Binding Start_Stop_AlgorithmCommand}" CommandParameter="{Binding Text, ElementName=arrayInputTextbox}" Header="Start algorithm"/>
             <MenuItem Header="{Binding modelSortingTypeAsMenuItemHeader}">
-                <MenuItem Command="{Binding SetAlgorithmToCommand}" CommandParameter="QuickSort" Header="QuickSort"/>
-                <MenuItem Command="{Binding SetAlgorithmToCommand}" CommandParameter="MergeSort" Header="MergeSort"/>
+                <MenuItem Command="{Binding SetAlgorithmToCommand}" CommandParameter="InsertionSort" Header="InsertionSort"/>
+                <MenuItem Command="{Binding SetAlgorithmToCommand}" CommandParameter="BubbleSort" Header="BubbleSort"/>
             </MenuItem>
             <Grid>
                 <TextBox x:Name="arrayInputTextbox" Width="300" TextChanged="OnArrayInputTextboxTextChanged" />
@@ -32,9 +32,20 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Button Content="{Binding value}" Height="{Binding height}" IsEnabled="False" VerticalAlignment="Bottom">
+                    <Button Content="{Binding value}" Height="{Binding height}" IsEnabled="{Binding isEnabled}" VerticalAlignment="Bottom">
                         <Button.Style>
                             <Style TargetType="Button">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding color}" Value="White">
+                                        <Setter Property="Background" Value="White" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding color}" Value="LightBlue">
+                                        <Setter Property="Background" Value="LightBlue" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding color}" Value="LightGreen">
+                                        <Setter Property="Background" Value="LightGreen" />
+                                    </DataTrigger>
+                                </Style.Triggers>
                             </Style>
                         </Button.Style>
                     </Button>

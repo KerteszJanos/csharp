@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace sortingAlgorithmsVisualizer_wpf.ViewModel
 {
@@ -29,11 +30,11 @@ namespace sortingAlgorithmsVisualizer_wpf.ViewModel
         {
             _model = model;
             _model.SortingTypeChanged += modelSortingTypeChanged;
-            modelSortingTypeAsMenuItemHeader = "Choose sorting algorythm (QuickSort)";
+            modelSortingTypeAsMenuItemHeader = "Choose sorting algorythm (InsertionSort)";
             OnPropertyChanged(nameof(modelSortingTypeAsMenuItemHeader));
 
             modelList = new ObservableCollection<VisualListItem>();
-            _model.ListInInitialised += modelListInInitialised;
+            _model.ListInitialised += modelListInitialised;
             _model.ListItemChanged += modelListItemChanged;
 
 
@@ -83,20 +84,35 @@ namespace sortingAlgorithmsVisualizer_wpf.ViewModel
             OnPropertyChanged(nameof(modelSortingTypeAsMenuItemHeader));
         }
 
-        private void modelListInInitialised(object? sender, List<int> e)
+        private void modelListInitialised(object? sender, List<int> e)
         {
             modelList.Clear();
             int max = e.Max();
             for (int i = 0; i < e.Count; i++)
             {
-                modelList.Add(new VisualListItem(e[i], (400 * ((double)e[i] / max)) + 5)); //405 is the hight of the ItemsControl panel
+                modelList.Add(new VisualListItem(e[i], (400 * ((double)e[i] / max)) + 5, "White", false)); //405 is the hight of the ItemsControl panel
 
             }
         }
 
         private void modelListItemChanged(object? sender, ListItemChangedEventArgs e)
         {
-            throw new NotImplementedException();
+            modelList[e.swapItemIndex1].isEnabled = true;
+            modelList[e.swapItemIndex2].isEnabled = true;
+            modelList[e.swapItemIndex1].color = "LightBlue";
+            modelList[e.swapItemIndex2].color = "LightGreen";
+            if (e.isSwapped)
+            {
+                Thread.Sleep(100);
+                VisualListItem temp = modelList[e.swapItemIndex1];
+                modelList[e.swapItemIndex1] = modelList[e.swapItemIndex2];
+                modelList[e.swapItemIndex2] = temp;
+            }
+            Thread.Sleep(100);
+            modelList[e.swapItemIndex1].color = "White";
+            modelList[e.swapItemIndex2].color = "White";
+            modelList[e.swapItemIndex1].isEnabled = false;
+            modelList[e.swapItemIndex2].isEnabled = false; //somewhy doesnt work
         }
         #endregion
 

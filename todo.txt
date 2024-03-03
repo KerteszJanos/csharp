@@ -18,7 +18,7 @@ VisualListItem
 
 //ObservationCollection amit követ a view
 
------------------------------------------------------------------------------------------------------------------------------
+
 
 //kitalálni hogy is működjön a rendezés maga (2 elem cseréjének eventje)
 
@@ -27,8 +27,16 @@ private void Start_Stop_Algorithm(object obj)
     //_model.StartAlgorithm();
 }
 
+-----------------------------------------------------------------------------------------------------------------------------
+Fehérre színezés működjön
+
 //start stop gomb váltakozása
 
 vizualizer -> visualizer
 
 sleepel altatni az algoritmust hogy látható legyen, stop, speed up, speed down ezt állítja
+
+Step counter
+
+Összehasonlítás counter
+ilyenek

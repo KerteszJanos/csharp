@@ -9,16 +9,17 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
     public class ListItemChangedEventArgs : EventArgs
     {
         #region properties / fields
-        //some logic to pass
-        //swapItemIndexA
-        //swapItemIndexB
-        //something like that
+        public int swapItemIndex1 { get; }
+        public int swapItemIndex2 { get; }
+        public bool isSwapped { get; }
         #endregion
 
         #region constructors
-        public ListItemChangedEventArgs()
+        public ListItemChangedEventArgs(int index1, int index2, bool isS)
         {
-
+            swapItemIndex1 = index1;
+            swapItemIndex2 = index2;
+            isSwapped = isS;
         }
         #endregion
     }
