@@ -53,6 +53,7 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
             this.sortingType = sortingType;
             onSortingTypeChanged(sortingType);
         }
+
         public async void StartAlgorithm(string inputList)
         {
             list.Clear();

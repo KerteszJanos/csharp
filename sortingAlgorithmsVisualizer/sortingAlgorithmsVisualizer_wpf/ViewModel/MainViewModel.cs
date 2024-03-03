@@ -83,7 +83,6 @@ namespace sortingAlgorithmsVisualizer_wpf.ViewModel
             modelSortingTypeAsMenuItemHeader = $"Choose sorting algorythm ({e})";
             OnPropertyChanged(nameof(modelSortingTypeAsMenuItemHeader));
         }
-
         private void modelListInitialised(object? sender, List<int> e)
         {
             modelList.Clear();
