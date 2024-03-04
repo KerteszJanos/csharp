@@ -94,24 +94,26 @@ namespace sortingAlgorithmsVisualizer_wpf.ViewModel
             }
         }
 
-        private void modelListItemChanged(object? sender, ListItemChangedEventArgs e)
+        private async void modelListItemChanged(object? sender, ListItemChangedEventArgs e)
         {
+            VisualListItem item1 = modelList[e.swapItemIndex1];
+            VisualListItem item2 = modelList[e.swapItemIndex2];
+
             modelList[e.swapItemIndex1].isEnabled = true;
             modelList[e.swapItemIndex2].isEnabled = true;
-            modelList[e.swapItemIndex1].color = "LightBlue";
-            modelList[e.swapItemIndex2].color = "LightGreen";
+            modelList[e.swapItemIndex1].color = "Red";
+            modelList[e.swapItemIndex2].color = "Red";
             if (e.isSwapped)
             {
-                Thread.Sleep(100);
-                VisualListItem temp = modelList[e.swapItemIndex1];
-                modelList[e.swapItemIndex1] = modelList[e.swapItemIndex2];
-                modelList[e.swapItemIndex2] = temp;
+                await Task.Delay(400);
+                modelList[e.swapItemIndex1] = item2;
+                modelList[e.swapItemIndex2] = item1;
             }
-            Thread.Sleep(100);
+            await Task.Delay(400);
             modelList[e.swapItemIndex1].color = "White";
             modelList[e.swapItemIndex2].color = "White";
             modelList[e.swapItemIndex1].isEnabled = false;
-            modelList[e.swapItemIndex2].isEnabled = false; //somewhy doesnt work
+            modelList[e.swapItemIndex2].isEnabled = false;
         }
         #endregion
 

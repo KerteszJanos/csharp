@@ -39,11 +39,8 @@
                                     <DataTrigger Binding="{Binding color}" Value="White">
                                         <Setter Property="Background" Value="White" />
                                     </DataTrigger>
-                                    <DataTrigger Binding="{Binding color}" Value="LightBlue">
-                                        <Setter Property="Background" Value="LightBlue" />
-                                    </DataTrigger>
-                                    <DataTrigger Binding="{Binding color}" Value="LightGreen">
-                                        <Setter Property="Background" Value="LightGreen" />
+                                    <DataTrigger Binding="{Binding color}" Value="Red">
+                                        <Setter Property="Background" Value="Red" />
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>

@@ -93,7 +93,7 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
                         inputArray[j - 1] = inputArray[j];
                         inputArray[j] = temp;
                     }
-                    await Task.Delay(100);
+                    await Task.Delay(1000);
                 }
             }
             return inputArray;
@@ -113,7 +113,7 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
                         inputArray[j] = inputArray[j + 1];
                         inputArray[j + 1] = tempVar;
                     }
-                    await Task.Delay(100);
+                    await Task.Delay(1000);
                 }
             }
             return inputArray;

@@ -22,7 +22,7 @@ namespace sortingAlgorithmsVisualizer_wpf.ViewModel
             set
             {
                 _color = value;
-                OnPropertyChanged(nameof(_color));
+                OnPropertyChanged();
             }
         }
 
@@ -33,7 +33,7 @@ namespace sortingAlgorithmsVisualizer_wpf.ViewModel
             set
             {
                 _isEnabled = value;
-                OnPropertyChanged(nameof(_isEnabled));
+                OnPropertyChanged();
             }
         }
         #endregion
