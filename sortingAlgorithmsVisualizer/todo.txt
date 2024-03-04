@@ -34,14 +34,11 @@ private void Start_Stop_Algorithm(object obj)
 Fehérre színezés működjön
 
 -----------------------------------------------------------------------------------------------------------------------------
-
-//start stop gomb váltakozása
-
-vizualizer -> visualizer
-
-sleepel altatni az algoritmust hogy látható legyen, stop, speed up, speed down ezt állítja
+return _model.algorithmIsRunning; //eventel megszerezni ezt az infót
 
 Step counter
 
 Összehasonlítás counter
 ilyenek
+
+ha van idő és kedv speed up 2-re megcsinálni, de elég babra megy

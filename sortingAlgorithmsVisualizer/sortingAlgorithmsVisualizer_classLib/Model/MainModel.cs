@@ -11,6 +11,9 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
         #region properties/fields
         public List<int> list { get; set; }
         private string sortingType; //set InsertionSort default in ctor
+        public bool algorithmIsRunning { get; set; }
+
+        private double sortingSpeed { get; set; }
         #endregion
 
         #region constructors
@@ -18,6 +21,8 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
         {
             list = new List<int>();
             sortingType = "InsertionSort";
+            algorithmIsRunning = false;
+            sortingSpeed = 1;
         }
         #endregion
 
@@ -66,15 +71,36 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
             switch (sortingType)
             {
                 case "InsertionSort":
-                    await Task.Delay(500);
+                    OnSortingSpeedChanged(sortingSpeed);
+                    await Task.Delay((int)(500 * sortingSpeed));
                     await InsertionSort(list);
+                    algorithmIsRunning = false;
                     break;
                 case "BubbleSort":
-                    await Task.Delay(500);
+                    algorithmIsRunning = true;
+                    await Task.Delay((int)(500 * sortingSpeed));
                     await BubbleSort(list);
+                    algorithmIsRunning = false;
                     break;
                 default:
                     break;
+            }
+        }
+
+        public void SlowDown()
+        {
+            if (sortingSpeed + 0.1 <= 2)
+            {
+                sortingSpeed += 0.1;
+                OnSortingSpeedChanged(sortingSpeed);
+            }
+        }
+        public void SpeedUp()
+        {
+            if (sortingSpeed - 0.1 > 0.01)
+            {
+                sortingSpeed -= 0.1;
+                OnSortingSpeedChanged(sortingSpeed);
             }
         }
         #endregion
@@ -93,7 +119,7 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
                         inputArray[j - 1] = inputArray[j];
                         inputArray[j] = temp;
                     }
-                    await Task.Delay(1000);
+                    await Task.Delay((int)(1000 * sortingSpeed));
                 }
             }
             return inputArray;
@@ -113,7 +139,7 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
                         inputArray[j] = inputArray[j + 1];
                         inputArray[j + 1] = tempVar;
                     }
-                    await Task.Delay(1000);
+                    await Task.Delay((int)(1000 * sortingSpeed));
                 }
             }
             return inputArray;
@@ -124,6 +150,7 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
         public event EventHandler<string>? SortingTypeChanged;
         public event EventHandler<List<int>>? ListInitialised;
         public event EventHandler<ListItemChangedEventArgs>? ListItemChanged;
+        public event EventHandler<double>? SortingSpeedChanged; //-1 if lower, 1 if higher
 
         private void onSortingTypeChanged(string sortingType)
         {
@@ -136,6 +163,10 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
         private void OnListItemChanged(ListItemChangedEventArgs e)
         {
             ListItemChanged!.Invoke(this, e);
+        }
+        private void OnSortingSpeedChanged(double sortingSpeed)
+        {
+            SortingSpeedChanged!.Invoke(this, sortingSpeed);
         }
         #endregion
     }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:sortingAlgorithmsVisualizer_wpf"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="900">
     <Grid>
         <Menu VerticalAlignment="Top">
             <Menu.ItemsPanel>
@@ -13,7 +13,7 @@
                     <DockPanel HorizontalAlignment="Stretch"/>
                 </ItemsPanelTemplate>
             </Menu.ItemsPanel>
-            <MenuItem Command="{Binding Start_Stop_AlgorithmCommand}" CommandParameter="{Binding Text, ElementName=arrayInputTextbox}" Header="Start algorithm"/>
+            <MenuItem Command="{Binding StartAlgorithmCommand}" CommandParameter="{Binding Text, ElementName=arrayInputTextbox}" Header="Start algorithm"/>
             <MenuItem Header="{Binding modelSortingTypeAsMenuItemHeader}">
                 <MenuItem Command="{Binding SetAlgorithmToCommand}" CommandParameter="InsertionSort" Header="InsertionSort"/>
                 <MenuItem Command="{Binding SetAlgorithmToCommand}" CommandParameter="BubbleSort" Header="BubbleSort"/>
@@ -22,6 +22,9 @@
                 <TextBox x:Name="arrayInputTextbox" Width="300" TextChanged="OnArrayInputTextboxTextChanged" />
                 <Label x:Name="arrayInputTextboxPlaceholderLabel" Content="Write the integer array here in format: 1,2,3,4,5" IsHitTestVisible="False"/>
             </Grid>
+            <Button Command="{Binding SlowDownCommand}" Content="Slow down"/>
+            <Label Content="{Binding modelSortingSpeedLabel}"/>
+            <Button Command="{Binding SpeedUpCommand}" Content="Speed up"/>
             <MenuItem Command="{Binding ExitCommand}" Header="Exit" HorizontalAlignment="Right"></MenuItem>
         </Menu>
         <ItemsControl VerticalAlignment="Top" Height="405" Margin="0,28,0,0" ItemsSource="{Binding modelList}">
