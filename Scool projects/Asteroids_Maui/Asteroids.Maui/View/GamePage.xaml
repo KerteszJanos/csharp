@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Asteroids.Maui.View.GamePage">
+
+    <StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <HorizontalStackLayout Grid.Row="0" Spacing="8" Margin="4" IsVisible="{Binding isVisible}">
+                <Button Text="New game" Command="{Binding NewGameCommand}" />
+                <Button Text="Load" Command="{Binding LoadGameCommand}" />
+                <Button Text="Save" Command="{Binding SaveGameCommand}" />
+                <Button Text="Exit" Command="{Binding ExitCommand}" />
+                <Label Text="{Binding secondsBeforePause}" />
+            </HorizontalStackLayout>
+
+            <StackLayout Grid.Row="1">
+                <CollectionView ItemsSource="{Binding Fields}">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" Span="11" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Button CornerRadius="0" BackgroundColor="{Binding BackgroundColor}">
+                                <!-- Gomb tartalma -->
+                            </Button>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+
+            <StackLayout Grid.Row="2" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="10">
+                <Button Command="{Binding AButtonPressedCommand}" />
+                <Button Command="{Binding DButtonPressedCommand}" />
+                <Button Text="Esc" Command="{Binding EscButtonPressedCommand}" Margin="50,0,0,0" />
+            </StackLayout>
+        </Grid>
+    </StackLayout>
+
+</ContentPage>

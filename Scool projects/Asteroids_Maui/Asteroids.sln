@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34316.72
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Asteroids.Maui", "Asteroids.Maui\Asteroids.Maui.csproj", "{F3B29745-46FB-4371-9C37-D03FF65184FC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AsteroidsClassLib", "AsteroidsClassLib\AsteroidsClassLib.csproj", "{9AC4681E-98A1-4B7B-9EB8-0E3D4C1356C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsteroidsTests", "AsteroidsTests\AsteroidsTests.csproj", "{88AAA59B-DCEB-450C-A96B-0D2F7D1268F4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F3B29745-46FB-4371-9C37-D03FF65184FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3B29745-46FB-4371-9C37-D03FF65184FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3B29745-46FB-4371-9C37-D03FF65184FC}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{F3B29745-46FB-4371-9C37-D03FF65184FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3B29745-46FB-4371-9C37-D03FF65184FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3B29745-46FB-4371-9C37-D03FF65184FC}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{9AC4681E-98A1-4B7B-9EB8-0E3D4C1356C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AC4681E-98A1-4B7B-9EB8-0E3D4C1356C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AC4681E-98A1-4B7B-9EB8-0E3D4C1356C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AC4681E-98A1-4B7B-9EB8-0E3D4C1356C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88AAA59B-DCEB-450C-A96B-0D2F7D1268F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88AAA59B-DCEB-450C-A96B-0D2F7D1268F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88AAA59B-DCEB-450C-A96B-0D2F7D1268F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88AAA59B-DCEB-450C-A96B-0D2F7D1268F4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {85A67828-918E-4002-947F-A3F9C447A268}
+	EndGlobalSection
+EndGlobal

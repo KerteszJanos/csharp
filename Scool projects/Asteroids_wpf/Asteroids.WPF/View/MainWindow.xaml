@@ -1,0 +1,64 @@
+﻿<Window x:Class="Asteroids.WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Asteroids.WPF"
+        mc:Ignorable="d"
+        Title="Asteroids" Height="600" Width="550">
+    <Window.InputBindings>
+        <!-- billentyűparancsok megfelelő paraméterrel -->
+        <KeyBinding Key="A" Command="{Binding AButtonPressedCommand}" />
+        <KeyBinding Key="D" Command="{Binding DButtonPressedCommand}"/>
+        <KeyBinding Key="Esc" Command="{Binding EscButtonPressedCommand}"/>
+    </Window.InputBindings>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Menu Grid.Row="0" Visibility="{Binding visibility}">
+            <MenuItem Header="Start new game" Command="{Binding NewGameCommand}" />
+            <MenuItem Header="Load game" Command="{Binding LoadGameCommand}" />
+            <MenuItem Header="Exit" Command="{Binding ExitCommand}" />
+            <MenuItem Header="Save Game" Command="{Binding SaveGameCommand}" Visibility="Visible" />
+            <TextBlock Text="{Binding secondsBeforePause}" />
+        </Menu>
+        <ItemsControl Grid.Row="1" ItemsSource="{Binding Fields}">
+            <!--az mezőket tároló vezérlő-->
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <!--a gombokat egy rácsba fűzzük fel-->
+                    <UniformGrid Rows="11" Columns="11" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <!--az elemek gombok lesznek-->
+                <DataTemplate>
+                    <Button>
+                        <!-- gomb háttérszíne -->
+                        <Button.Style>
+                            <!-- gomb stílusa, ahol a színét megadjuk -->
+                            <Style TargetType="Button">
+                                <Style.Triggers>
+                                    <!-- a szín egy adatkötés hatására fog változni-->
+                                    <DataTrigger Binding="{Binding fieldStatus}" Value="Asteroid">
+                                        <Setter Property="Background" Value="Black" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding fieldStatus}" Value="Nothing">
+                                        <Setter Property="Background" Value="White" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding fieldStatus}" Value="Player">
+                                        <Setter Property="Background" Value="DarkBlue" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </Grid>
+</Window>
