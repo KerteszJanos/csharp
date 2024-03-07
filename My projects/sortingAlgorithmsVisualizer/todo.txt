@@ -41,4 +41,6 @@ Step counter
 Összehasonlítás counter
 ilyenek
 
+random lista generátor bele
+
 ha van idő és kedv speed up 2-re megcsinálni, de elég babra megy

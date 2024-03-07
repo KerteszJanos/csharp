@@ -17,6 +17,8 @@
             <MenuItem Header="{Binding modelSortingTypeAsMenuItemHeader}">
                 <MenuItem Command="{Binding SetAlgorithmToCommand}" CommandParameter="InsertionSort" Header="InsertionSort"/>
                 <MenuItem Command="{Binding SetAlgorithmToCommand}" CommandParameter="BubbleSort" Header="BubbleSort"/>
+                <MenuItem Command="{Binding SetAlgorithmToCommand}" CommandParameter="BogoSort" Header="BogoSort"/>
+                <MenuItem Command="{Binding SetAlgorithmToCommand}" CommandParameter="QuickSort" Header="QuickSort"/>
             </MenuItem>
             <Grid>
                 <TextBox x:Name="arrayInputTextbox" Width="300" TextChanged="OnArrayInputTextboxTextChanged" />
@@ -44,6 +46,9 @@
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding color}" Value="Red">
                                         <Setter Property="Background" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding color}" Value="Green">
+                                        <Setter Property="Background" Value="Green" />
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
