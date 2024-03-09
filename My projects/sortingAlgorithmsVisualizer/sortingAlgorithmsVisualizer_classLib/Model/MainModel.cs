@@ -14,6 +14,7 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
         public bool algorithmIsRunning { get; set; }
 
         private double sortingSpeed { get; set; }
+        private int prevPiv { get; set; }
         #endregion
 
         #region constructors
@@ -23,6 +24,7 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
             sortingType = "InsertionSort";
             algorithmIsRunning = false;
             sortingSpeed = 1;
+            prevPiv = -1;
         }
         #endregion
 
@@ -196,6 +198,8 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
                 var i = leftIndex;
                 var j = rightIndex;
                 var pivot = array[leftIndex];
+                OnPivotChanged(leftIndex);
+                prevPiv = leftIndex;
 
                 while (i <= j)
                 {
@@ -239,6 +243,7 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
         public event EventHandler<List<int>>? ListInitialised;
         public event EventHandler<ListItemChangedEventArgs>? ListItemChanged;
         public event EventHandler<double>? SortingSpeedChanged; //-1 if lower, 1 if higher
+        public event EventHandler<int>? PivotChanged;
 
         private void onSortingTypeChanged(string sortingType)
         {
@@ -255,6 +260,10 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
         private void OnSortingSpeedChanged(double sortingSpeed)
         {
             SortingSpeedChanged!.Invoke(this, sortingSpeed);
+        }
+        private void OnPivotChanged(int newPiv)
+        {
+            PivotChanged!.Invoke(this, newPiv);
         }
         #endregion
     }

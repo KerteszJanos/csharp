@@ -56,6 +56,7 @@ namespace sortingAlgorithmsVisualizer_wpf.ViewModel
             _model.SortingSpeedChanged += modelSortingSpeedChanged;
             modelSortingSpeed = 1;
             modelSortingSpeedLabel = "1.0x";
+            _model.PivotChanged += modelPivotChanged;
 
 
             StartAlgorithmCommand = new DelegateCommand(StartAlgorithm, CanStartAlgorithm);
@@ -158,6 +159,19 @@ namespace sortingAlgorithmsVisualizer_wpf.ViewModel
         private void modelSortingSpeedChanged(object? sender, double sortingSpeed)
         {
             modelSortingSpeed = sortingSpeed;
+        }
+
+        private void modelPivotChanged(object? sender, int e)
+        {
+            //some logic for pivot, probably thats better, if we have the element in a variable what we need to color back
+
+            //if (e.Item1 != -1) //coloring back the prev pivot
+            //{
+            //    modelList[e.Item1].color = "White";
+            //    modelList[e.Item1].isEnabled = false;
+            //}
+            //modelList[e.Item2].isEnabled = true;
+            //modelList[e.Item2].color = "Green";
         }
         #endregion
 

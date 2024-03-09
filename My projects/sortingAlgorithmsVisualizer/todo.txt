@@ -34,7 +34,20 @@ private void Start_Stop_Algorithm(object obj)
 Fehérre színezés működjön
 
 -----------------------------------------------------------------------------------------------------------------------------
-return _model.algorithmIsRunning; //eventel megszerezni ezt az infót
+        private void modelPivotChanged(object? sender, int e)
+        {
+            //some logic for pivot, probably thats better, if we have the element in a variable what we need to color back
+
+            //if (e.Item1 != -1) //coloring back the prev pivot
+            //{
+            //    modelList[e.Item1].color = "White";
+            //    modelList[e.Item1].isEnabled = false;
+            //}
+            //modelList[e.Item2].isEnabled = true;
+            //modelList[e.Item2].color = "Green";
+        }
+
+
 
 Step counter
 
@@ -44,3 +57,6 @@ ilyenek
 random lista generátor bele
 
 ha van idő és kedv speed up 2-re megcsinálni, de elég babra megy
+
+return _model.algorithmIsRunning; //eventel megszerezni ezt az infót
+(Sérti ez egyáltalán az mvvm architectúrát?)
