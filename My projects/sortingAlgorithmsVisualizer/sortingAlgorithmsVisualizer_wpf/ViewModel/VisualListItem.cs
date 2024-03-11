@@ -16,6 +16,9 @@ namespace sortingAlgorithmsVisualizer_wpf.ViewModel
         public double height { get; }
 
         private string _color;
+
+        public bool isPivot { get; set; }
+
         public string color
         {
             get { return _color; }
@@ -49,6 +52,7 @@ namespace sortingAlgorithmsVisualizer_wpf.ViewModel
             OnPropertyChanged(nameof(color));
             _isEnabled = ie;
             OnPropertyChanged(nameof(isEnabled));
+            isPivot = false;
         }
         #endregion
 

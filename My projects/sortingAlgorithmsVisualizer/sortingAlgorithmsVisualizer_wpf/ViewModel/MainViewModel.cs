@@ -31,6 +31,8 @@ namespace sortingAlgorithmsVisualizer_wpf.ViewModel
         }
         public string modelSortingSpeedLabel { get; set; } //modelSortingSpeed setter sets it
 
+        private VisualListItem prevPivot = null!;
+
         public ObservableCollection<VisualListItem> modelList { get; set; }
 
         //Commands
@@ -140,10 +142,16 @@ namespace sortingAlgorithmsVisualizer_wpf.ViewModel
             VisualListItem item1 = modelList[e.swapItemIndex1];
             VisualListItem item2 = modelList[e.swapItemIndex2];
 
-            modelList[e.swapItemIndex1].isEnabled = true;
-            modelList[e.swapItemIndex2].isEnabled = true;
-            modelList[e.swapItemIndex1].color = "Red";
-            modelList[e.swapItemIndex2].color = "Red";
+            if (!item1.isPivot)
+            {
+                item1.isEnabled = true;
+                item1.color = "Red";
+            }
+            if (!item2.isPivot)
+            {
+                item2.isEnabled = true;
+                item2.color = "Red";
+            }
             if (e.isSwapped)
             {
                 await Task.Delay((int)(400 * modelSortingSpeed));
@@ -151,10 +159,16 @@ namespace sortingAlgorithmsVisualizer_wpf.ViewModel
                 modelList[e.swapItemIndex2] = item1;
             }
             await Task.Delay((int)(400 * modelSortingSpeed));
-            modelList[e.swapItemIndex1].color = "White";
-            modelList[e.swapItemIndex2].color = "White";
-            modelList[e.swapItemIndex1].isEnabled = false;
-            modelList[e.swapItemIndex2].isEnabled = false;
+            if (!item1.isPivot)
+            {
+                item1.color = "White";
+                item1.isEnabled = false;
+            }
+            if (!item2.isPivot)
+            {
+                item2.color = "White";
+                item2.isEnabled = false;
+            }
         }
         private void modelSortingSpeedChanged(object? sender, double sortingSpeed)
         {
@@ -163,15 +177,17 @@ namespace sortingAlgorithmsVisualizer_wpf.ViewModel
 
         private void modelPivotChanged(object? sender, int e)
         {
-            //some logic for pivot, probably thats better, if we have the element in a variable what we need to color back
-
-            //if (e.Item1 != -1) //coloring back the prev pivot
-            //{
-            //    modelList[e.Item1].color = "White";
-            //    modelList[e.Item1].isEnabled = false;
-            //}
-            //modelList[e.Item2].isEnabled = true;
-            //modelList[e.Item2].color = "Green";
+            if (prevPivot != null)
+            {
+                //set back prev pivot to a normal element
+                prevPivot.isPivot = false;
+                prevPivot.color = "White";
+                prevPivot.isEnabled = false;
+            }
+            modelList[e].isEnabled = true;
+            modelList[e].color = "Green";
+            modelList[e].isPivot = true;
+            prevPivot = modelList[e];
         }
         #endregion
 
