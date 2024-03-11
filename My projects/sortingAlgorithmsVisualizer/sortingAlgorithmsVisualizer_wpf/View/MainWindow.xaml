@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:sortingAlgorithmsVisualizer_wpf"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="900">
+        Title="MainWindow" Height="500" Width="900">
     <Grid>
         <Menu VerticalAlignment="Top">
             <Menu.ItemsPanel>
@@ -57,5 +57,10 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
+        <StackPanel VerticalAlignment="Bottom" Orientation="Horizontal">
+            <Label Content="{Binding modelComparisons}"></Label>
+            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+            <Label Content="{Binding modelArrayAcces}"></Label>
+        </StackPanel>
     </Grid>
 </Window>

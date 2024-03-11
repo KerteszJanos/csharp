@@ -32,6 +32,8 @@ namespace sortingAlgorithmsVisualizer_wpf.ViewModel
         public string modelSortingSpeedLabel { get; set; } //modelSortingSpeed setter sets it
 
         private VisualListItem prevPivot = null!;
+        public string modelComparisons { get; set; }
+        public string modelArrayAcces { get; set; }
 
         public ObservableCollection<VisualListItem> modelList { get; set; }
 
@@ -59,7 +61,12 @@ namespace sortingAlgorithmsVisualizer_wpf.ViewModel
             modelSortingSpeed = 1;
             modelSortingSpeedLabel = "1.0x";
             _model.PivotChanged += modelPivotChanged;
-
+            _model.ComparisonCounterChanged += modelComparisonCounterChanged;
+            _model.ArrayAccesCounterChanged += modelArrayAccesCounterChanged;
+            modelComparisons = "Comparisons: 0";
+            OnPropertyChanged(nameof(modelComparisons));
+            modelArrayAcces = "Array acces: 0";
+            OnPropertyChanged(nameof(modelArrayAcces));
 
             StartAlgorithmCommand = new DelegateCommand(StartAlgorithm, CanStartAlgorithm);
             SetAlgorithmToCommand = new DelegateCommand(SetAlgorithmTo, CanSetAlgorithmTo);
@@ -179,15 +186,30 @@ namespace sortingAlgorithmsVisualizer_wpf.ViewModel
         {
             if (prevPivot != null)
             {
-                //set back prev pivot to a normal element
+                //sets back prev pivot to a normal element
                 prevPivot.isPivot = false;
                 prevPivot.color = "White";
                 prevPivot.isEnabled = false;
             }
-            modelList[e].isEnabled = true;
-            modelList[e].color = "Green";
-            modelList[e].isPivot = true;
-            prevPivot = modelList[e];
+            if (e != -1)
+            {
+                modelList[e].isEnabled = true;
+                modelList[e].color = "Green";
+                modelList[e].isPivot = true;
+                prevPivot = modelList[e];
+            }
+        }
+
+
+        private void modelComparisonCounterChanged(object? sender, string e)
+        {
+            modelComparisons = "Comparisons " + e;
+            OnPropertyChanged(nameof(modelComparisons));
+        }
+        private void modelArrayAccesCounterChanged(object? sender, string e)
+        {
+            modelArrayAcces = "Array acces: " + e;
+            OnPropertyChanged(nameof(modelArrayAcces));
         }
         #endregion
 

@@ -14,7 +14,9 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
         public bool algorithmIsRunning { get; set; }
 
         private double sortingSpeed { get; set; }
-        private int prevPiv { get; set; }
+
+        private int ComparisonCounter;
+        private int ArrayAccesCounter;
         #endregion
 
         #region constructors
@@ -24,7 +26,6 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
             sortingType = "InsertionSort";
             algorithmIsRunning = false;
             sortingSpeed = 1;
-            prevPiv = -1;
         }
         #endregion
 
@@ -63,7 +64,15 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
 
         public async void StartAlgorithm(string inputList)
         {
+            //set default values
             list.Clear();
+            ComparisonCounter = 0;
+            OnComparisonCounterChanged(ComparisonCounter);
+            ArrayAccesCounter = 0;
+            OnArrayAccesCounterChanged(ArrayAccesCounter);
+            algorithmIsRunning = true;
+
+            //initialize list
             string[] inputLists = inputList.Split(',');
             for (int i = 0; i < inputLists.Length; i++)
             {
@@ -76,29 +85,23 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
                     OnSortingSpeedChanged(sortingSpeed);
                     await Task.Delay((int)(500 * sortingSpeed));
                     await InsertionSort(list);
-                    algorithmIsRunning = false;
                     break;
                 case "BubbleSort":
-                    algorithmIsRunning = true;
                     await Task.Delay((int)(500 * sortingSpeed));
                     await BubbleSort(list);
-                    algorithmIsRunning = false;
                     break;
                 case "BogoSort":
-                    algorithmIsRunning = true;
                     await Task.Delay((int)(500 * sortingSpeed));
                     await BogoSort(list);
-                    algorithmIsRunning = false;
                     break;
                 case "QuickSort":
-                    algorithmIsRunning = true;
                     await Task.Delay((int)(500 * sortingSpeed));
                     QuickSort(list);
-                    algorithmIsRunning = false;
                     break;
                 default:
                     break;
             }
+            algorithmIsRunning = false;
         }
 
         public void SlowDown()
@@ -129,9 +132,16 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
                     OnListItemChanged(new ListItemChangedEventArgs(j - 1, j, (inputinputArray[j - 1] > inputinputArray[j])));
                     if (inputinputArray[j - 1] > inputinputArray[j])
                     {
+                        ComparisonCounter++;
+                        OnComparisonCounterChanged(ComparisonCounter);
+                        ArrayAccesCounter += 2;
+                        OnArrayAccesCounterChanged(ArrayAccesCounter);
+
                         int temp = inputinputArray[j - 1];
                         inputinputArray[j - 1] = inputinputArray[j];
                         inputinputArray[j] = temp;
+                        ArrayAccesCounter += 2;
+                        OnArrayAccesCounterChanged(ArrayAccesCounter);
                     }
                     await Task.Delay((int)(1000 * sortingSpeed));
                 }
@@ -149,9 +159,16 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
                     OnListItemChanged(new ListItemChangedEventArgs(j, j + 1, (inputinputArray[j] > inputinputArray[j + 1])));
                     if (inputinputArray[j] > inputinputArray[j + 1])
                     {
+                        ComparisonCounter++;
+                        OnComparisonCounterChanged(ComparisonCounter);
+                        ArrayAccesCounter += 2;
+                        OnArrayAccesCounterChanged(ArrayAccesCounter);
+
                         int tempVar = inputinputArray[j];
                         inputinputArray[j] = inputinputArray[j + 1];
                         inputinputArray[j + 1] = tempVar;
+                        ArrayAccesCounter += 2;
+                        OnArrayAccesCounterChanged(ArrayAccesCounter);
                     }
                     await Task.Delay((int)(1000 * sortingSpeed));
                 }
@@ -166,6 +183,10 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
                 int i = 1;
                 while (i < inputinputArray.Count && inputinputArray[i - 1] < inputinputArray[i])
                 {
+                    ComparisonCounter += 2;
+                    OnComparisonCounterChanged(ComparisonCounter);
+                    ArrayAccesCounter += 2;
+                    OnArrayAccesCounterChanged(ArrayAccesCounter);
                     i++;
                 }
                 return i == inputinputArray.Count();
@@ -179,11 +200,16 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
                 int temp;
                 while (n > 1)
                 {
+                    ComparisonCounter++;
+                    OnComparisonCounterChanged(ComparisonCounter);
                     n--;
                     k = rnd.Next(n + 1);
                     temp = list[k];
                     list[k] = list[n];
                     list[n] = temp;
+                    ArrayAccesCounter += 2;
+                    OnArrayAccesCounterChanged(ArrayAccesCounter);
+
                     OnListItemChanged(new ListItemChangedEventArgs(k, n, true));
                     await Task.Delay((int)(1000 * sortingSpeed));
                 }
@@ -198,26 +224,39 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
                 var i = leftIndex;
                 var j = rightIndex;
                 var pivot = array[leftIndex];
+                ArrayAccesCounter += 1;
+                OnArrayAccesCounterChanged(ArrayAccesCounter);
                 OnPivotChanged(leftIndex);
-                prevPiv = leftIndex;
 
                 while (i <= j)
                 {
                     while (array[i] < pivot)
                     {
+                        ComparisonCounter++;
+                        OnComparisonCounterChanged(ComparisonCounter);
+                        ArrayAccesCounter += 1;
+                        OnArrayAccesCounterChanged(ArrayAccesCounter);
                         i++;
                     }
 
                     while (array[j] > pivot)
                     {
+                        ComparisonCounter++;
+                        OnComparisonCounterChanged(ComparisonCounter);
+                        ArrayAccesCounter += 1;
+                        OnArrayAccesCounterChanged(ArrayAccesCounter);
                         j--;
                     }
 
                     if (i <= j)
                     {
+                        ComparisonCounter++;
+                        OnComparisonCounterChanged(ComparisonCounter);
                         int temp = array[i];
                         array[i] = array[j];
                         array[j] = temp;
+                        ArrayAccesCounter += 2;
+                        OnArrayAccesCounterChanged(ArrayAccesCounter);
                         OnListItemChanged(new ListItemChangedEventArgs(i, j, true));
                         await Task.Delay((int)(1000 * sortingSpeed));
                         i++;
@@ -226,14 +265,23 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
                 }
 
                 if (leftIndex < j)
+                {
+                    ComparisonCounter++;
+                    OnComparisonCounterChanged(ComparisonCounter);
                     await SortArray(array, leftIndex, j);
+                }
 
                 if (i < rightIndex)
+                {
+                    ComparisonCounter++;
+                    OnComparisonCounterChanged(ComparisonCounter);
                     await SortArray(array, i, rightIndex);
+                }
 
                 return array;
             }
             var result = await SortArray(inputArray, 0, inputArray.Count - 1);
+            OnPivotChanged(-1);
         }
 
         #endregion
@@ -244,7 +292,8 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
         public event EventHandler<ListItemChangedEventArgs>? ListItemChanged;
         public event EventHandler<double>? SortingSpeedChanged; //-1 if lower, 1 if higher
         public event EventHandler<int>? PivotChanged;
-
+        public event EventHandler<string>? ComparisonCounterChanged;
+        public event EventHandler<string>? ArrayAccesCounterChanged;
         private void onSortingTypeChanged(string sortingType)
         {
             SortingTypeChanged!.Invoke(this, sortingType);
@@ -264,6 +313,14 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
         private void OnPivotChanged(int newPiv)
         {
             PivotChanged!.Invoke(this, newPiv);
+        }
+        private void OnComparisonCounterChanged(int value)
+        {
+            ComparisonCounterChanged!.Invoke(this, value.ToString());
+        }
+        private void OnArrayAccesCounterChanged(int value)
+        {
+            ArrayAccesCounterChanged!.Invoke(this, value.ToString());
         }
         #endregion
     }
