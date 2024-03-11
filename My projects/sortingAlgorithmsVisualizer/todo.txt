@@ -33,7 +33,7 @@ private void Start_Stop_Algorithm(object obj)
 
 Fehérre színezés működjön
 
------------------------------------------------------------------------------------------------------------------------------
+
         private void modelPivotChanged(object? sender, int e)
         {
             //some logic for pivot, probably thats better, if we have the element in a variable what we need to color back
@@ -47,6 +47,8 @@ Fehérre színezés működjön
             //modelList[e.Item2].color = "Green";
         }
 
+-----------------------------------------------------------------------------------------------------------------------------
+megcsinálni h pivot ne látszódjon a végén
 
 
 Step counter
