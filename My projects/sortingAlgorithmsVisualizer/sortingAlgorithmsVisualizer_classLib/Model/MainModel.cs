@@ -32,8 +32,29 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
         #region public methods
         public bool InputListInAGoodFormat(string inputList) //if the string is "" returns false
         {
-            bool isComma = true;
+            inputList = inputList.Trim();
 
+            if (inputList == null || inputList.Length == 0)
+            {
+                return false;
+            }
+            if (inputList[0] == '[')
+            {
+                if (inputList[inputList.Length - 1] == ']' && inputList.Length >= 5) // 5 because [x-y] is minimum 5 character
+                {
+                    string[] splittedList = inputList.Split('-');
+                    if (splittedList.Length != 2)
+                    {
+                        return false;
+                    }
+                    return int.TryParse(splittedList[0].Substring(1), out int fst) && int.TryParse(splittedList[1].Substring(0, splittedList[1].Length - 1), out int snd) && fst < snd;
+                    //                                /\                                                /\                                                                       /\
+                    //              returns true if the first string is an int       returns true if the first string is an int                      returns true if the first string is smaller than the second
+                }
+                return false;
+            }
+
+            bool isComma = true;
             int i = 0;
             while (i < inputList.Length && (Char.IsNumber(inputList[i]) || inputList[i] == ','))
             {
@@ -64,21 +85,51 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
 
         public async void StartAlgorithm(string inputList)
         {
+            inputList = inputList.Trim();
+
             //set default values
             list.Clear();
             ComparisonCounter = 0;
             OnComparisonCounterChanged(ComparisonCounter);
             ArrayAccesCounter = 0;
             OnArrayAccesCounterChanged(ArrayAccesCounter);
-            algorithmIsRunning = true;
 
             //initialize list
-            string[] inputLists = inputList.Split(',');
-            for (int i = 0; i < inputLists.Length; i++)
+            if (inputList[0] == '[')
             {
-                list.Add(int.Parse(inputLists[i]));
+                string[] splittedList = inputList.Split('-');
+                int.TryParse(splittedList[0].Substring(1), out int startValue);
+                int.TryParse(splittedList[1].Substring(0, splittedList[1].Length - 1), out int endValue);
+
+                for (int i = startValue; i <= endValue; i++)
+                {
+                    list.Add(i);
+                }
+
+                //Fisher–Yates shuffle
+                Random rnd = new Random();
+                int n = list.Count;
+                int k;
+                int temp;
+                while (n > 1)
+                {
+                    n--;
+                    k = rnd.Next(n + 1);
+                    temp = list[k];
+                    list[k] = list[n];
+                    list[n] = temp;
+                }
             }
-            OnListInitialised(list);
+            else
+            {
+                string[] inputLists = inputList.Split(',');
+                for (int i = 0; i < inputLists.Length; i++)
+                {
+                    list.Add(int.Parse(inputLists[i]));
+                }
+            }
+            OnListInitialised(list); // algorithmIsRunning = true; needs to be after this, bc we Investigate if an algorithm is running when check input format
+            algorithmIsRunning = true;
             switch (sortingType)
             {
                 case "InsertionSort":
@@ -132,17 +183,16 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
                     OnListItemChanged(new ListItemChangedEventArgs(j - 1, j, (inputinputArray[j - 1] > inputinputArray[j])));
                     if (inputinputArray[j - 1] > inputinputArray[j])
                     {
-                        ComparisonCounter++;
-                        OnComparisonCounterChanged(ComparisonCounter);
-                        ArrayAccesCounter += 2;
-                        OnArrayAccesCounterChanged(ArrayAccesCounter);
-
                         int temp = inputinputArray[j - 1];
                         inputinputArray[j - 1] = inputinputArray[j];
                         inputinputArray[j] = temp;
                         ArrayAccesCounter += 2;
                         OnArrayAccesCounterChanged(ArrayAccesCounter);
                     }
+                    ComparisonCounter++;
+                    OnComparisonCounterChanged(ComparisonCounter);
+                    ArrayAccesCounter += 2;
+                    OnArrayAccesCounterChanged(ArrayAccesCounter);
                     await Task.Delay((int)(1000 * sortingSpeed));
                 }
             }
@@ -159,17 +209,16 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
                     OnListItemChanged(new ListItemChangedEventArgs(j, j + 1, (inputinputArray[j] > inputinputArray[j + 1])));
                     if (inputinputArray[j] > inputinputArray[j + 1])
                     {
-                        ComparisonCounter++;
-                        OnComparisonCounterChanged(ComparisonCounter);
-                        ArrayAccesCounter += 2;
-                        OnArrayAccesCounterChanged(ArrayAccesCounter);
-
                         int tempVar = inputinputArray[j];
                         inputinputArray[j] = inputinputArray[j + 1];
                         inputinputArray[j + 1] = tempVar;
                         ArrayAccesCounter += 2;
                         OnArrayAccesCounterChanged(ArrayAccesCounter);
                     }
+                    ComparisonCounter++;
+                    OnComparisonCounterChanged(ComparisonCounter);
+                    ArrayAccesCounter += 2;
+                    OnArrayAccesCounterChanged(ArrayAccesCounter);
                     await Task.Delay((int)(1000 * sortingSpeed));
                 }
             }
@@ -181,7 +230,7 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
             bool ListisSorted(List<int> inputinputArray)
             {
                 int i = 1;
-                while (i < inputinputArray.Count && inputinputArray[i - 1] < inputinputArray[i])
+                while (i < inputinputArray.Count && inputinputArray[i - 1] <= inputinputArray[i])
                 {
                     ComparisonCounter += 2;
                     OnComparisonCounterChanged(ComparisonCounter);
@@ -250,8 +299,6 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
 
                     if (i <= j)
                     {
-                        ComparisonCounter++;
-                        OnComparisonCounterChanged(ComparisonCounter);
                         int temp = array[i];
                         array[i] = array[j];
                         array[j] = temp;
@@ -262,21 +309,23 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
                         i++;
                         j--;
                     }
+                    ComparisonCounter++;
+                    OnComparisonCounterChanged(ComparisonCounter);
                 }
 
                 if (leftIndex < j)
                 {
-                    ComparisonCounter++;
-                    OnComparisonCounterChanged(ComparisonCounter);
                     await SortArray(array, leftIndex, j);
                 }
+                ComparisonCounter++;
+                OnComparisonCounterChanged(ComparisonCounter);
 
                 if (i < rightIndex)
                 {
-                    ComparisonCounter++;
-                    OnComparisonCounterChanged(ComparisonCounter);
                     await SortArray(array, i, rightIndex);
                 }
+                ComparisonCounter++;
+                OnComparisonCounterChanged(ComparisonCounter);
 
                 return array;
             }

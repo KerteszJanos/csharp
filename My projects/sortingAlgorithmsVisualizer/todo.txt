@@ -55,7 +55,7 @@ Step counter
 
 Összehasonlítás counter
 ilyenek
------------------------------------------------------------------------------------------------------------------------------
+
 random lista generátor bele
 
 21,35,44,99,47,6,65,22,79,28,56,9,18,72,43,70,85,77,60,36,87,5,33,80,97,67,25,48,50,45,3,68,88,41,7,12,0,39,81,74,17,89,55,34,46,26,62,54,92,1,13,31,93,73,83,11,27,16,20,91,23,40,49,75,4,30,64,10,82,24,61,86,32,58,37,59,95,78,69,15,8,42,90,29,98,66,96,63,84,14,100,2,71,76,57,19,52,38,94,53,51
@@ -63,3 +63,11 @@ ha van idő és kedv speed up 2-re megcsinálni, de elég babra megy
 
 return _model.algorithmIsRunning; //eventel megszerezni ezt az infót
 (Sérti ez egyáltalán az mvvm architectúrát?)
+-----------------------------------------------------------------------------------------------------------------------------
+timer hozzáadása (környezetben a timer, és a modell egy eseményét hívja)
+
+merge sort még mehetne bele, vagy ami megtetszik
+
+dokumentációt és/vagy readme-t írni
+
+esetleg unit testek

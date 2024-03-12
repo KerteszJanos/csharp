@@ -36,7 +36,7 @@ namespace sortingAlgorithmsVisualizer_wpf.View
             }
             else
             {
-                arrayInputTextboxPlaceholderLabel.Content = "Write the integer array here in format: 1,2,3,4,5";
+                arrayInputTextboxPlaceholderLabel.Content = "Format: 1,2,3,4,5 OR [1-5]";
             }
         }
         #endregion

@@ -34,6 +34,7 @@ namespace sortingAlgorithmsVisualizer_wpf.ViewModel
         private VisualListItem prevPivot = null!;
         public string modelComparisons { get; set; }
         public string modelArrayAcces { get; set; }
+        public string arrayInputTextboxContent { get; set; }
 
         public ObservableCollection<VisualListItem> modelList { get; set; }
 
@@ -67,6 +68,8 @@ namespace sortingAlgorithmsVisualizer_wpf.ViewModel
             OnPropertyChanged(nameof(modelComparisons));
             modelArrayAcces = "Array acces: 0";
             OnPropertyChanged(nameof(modelArrayAcces));
+            arrayInputTextboxContent = "";
+            OnPropertyChanged(nameof(arrayInputTextboxContent));
 
             StartAlgorithmCommand = new DelegateCommand(StartAlgorithm, CanStartAlgorithm);
             SetAlgorithmToCommand = new DelegateCommand(SetAlgorithmTo, CanSetAlgorithmTo);
@@ -135,6 +138,22 @@ namespace sortingAlgorithmsVisualizer_wpf.ViewModel
         }
         private void modelListInitialised(object? sender, List<int> e)
         {
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < e.Count; i++)
+            {
+                if (i == e.Count - 1)
+                {
+                    sb.Append(e[i].ToString());
+                }
+                else
+                {
+                    sb.Append(e[i].ToString());
+                    sb.Append(',');
+                }
+            }
+            arrayInputTextboxContent = sb.ToString();
+            OnPropertyChanged(nameof(arrayInputTextboxContent));
+
             modelList.Clear();
             int max = e.Max();
             for (int i = 0; i < e.Count; i++)

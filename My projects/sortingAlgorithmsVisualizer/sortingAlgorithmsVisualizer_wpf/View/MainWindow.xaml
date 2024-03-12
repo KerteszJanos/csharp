@@ -21,8 +21,8 @@
                 <MenuItem Command="{Binding SetAlgorithmToCommand}" CommandParameter="QuickSort" Header="QuickSort"/>
             </MenuItem>
             <Grid>
-                <TextBox x:Name="arrayInputTextbox" Width="300" TextChanged="OnArrayInputTextboxTextChanged" />
-                <Label x:Name="arrayInputTextboxPlaceholderLabel" Content="Write the integer array here in format: 1,2,3,4,5" IsHitTestVisible="False"/>
+                <TextBox Text="{Binding arrayInputTextboxContent}" x:Name="arrayInputTextbox" Width="300" TextChanged="OnArrayInputTextboxTextChanged" />
+                <Label x:Name="arrayInputTextboxPlaceholderLabel" Content="Format: 1,2,3,4,5 OR [1-5]" IsHitTestVisible="False"/>
             </Grid>
             <Button Command="{Binding SlowDownCommand}" Content="Slow down"/>
             <Label Content="{Binding modelSortingSpeedLabel}"/>
