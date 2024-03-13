@@ -61,6 +61,8 @@
             <Label Content="{Binding modelComparisons}"></Label>
             <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
             <Label Content="{Binding modelArrayAcces}"></Label>
+            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+            <Label Content="{Binding modelElapsedSeconds}"></Label>
         </StackPanel>
     </Grid>
 </Window>

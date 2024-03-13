@@ -35,6 +35,7 @@ namespace sortingAlgorithmsVisualizer_wpf.ViewModel
         public string modelComparisons { get; set; }
         public string modelArrayAcces { get; set; }
         public string arrayInputTextboxContent { get; set; }
+        public string modelElapsedSeconds { get; set; }
 
         public ObservableCollection<VisualListItem> modelList { get; set; }
 
@@ -70,6 +71,9 @@ namespace sortingAlgorithmsVisualizer_wpf.ViewModel
             OnPropertyChanged(nameof(modelArrayAcces));
             arrayInputTextboxContent = "";
             OnPropertyChanged(nameof(arrayInputTextboxContent));
+            modelElapsedSeconds = "Elapsed seconds: 0";
+            OnPropertyChanged(nameof(modelElapsedSeconds));
+            _model.ElapsedSecondsChanged += modelElapsedSecondsChanged;
 
             StartAlgorithmCommand = new DelegateCommand(StartAlgorithm, CanStartAlgorithm);
             SetAlgorithmToCommand = new DelegateCommand(SetAlgorithmTo, CanSetAlgorithmTo);
@@ -229,6 +233,12 @@ namespace sortingAlgorithmsVisualizer_wpf.ViewModel
         {
             modelArrayAcces = "Array acces: " + e;
             OnPropertyChanged(nameof(modelArrayAcces));
+        }
+
+        private void modelElapsedSecondsChanged(object? sender, string e)
+        {
+            modelElapsedSeconds = "Elapsed seconds: " + e;
+            OnPropertyChanged(nameof(modelElapsedSeconds));
         }
         #endregion
 

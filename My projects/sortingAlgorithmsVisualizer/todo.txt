@@ -63,11 +63,12 @@ ha van idő és kedv speed up 2-re megcsinálni, de elég babra megy
 
 return _model.algorithmIsRunning; //eventel megszerezni ezt az infót
 (Sérti ez egyáltalán az mvvm architectúrát?)
------------------------------------------------------------------------------------------------------------------------------
+
 timer hozzáadása (környezetben a timer, és a modell egy eseményét hívja)
-
-merge sort még mehetne bele, vagy ami megtetszik
-
+-----------------------------------------------------------------------------------------------------------------------------
 dokumentációt és/vagy readme-t írni
-
 esetleg unit testek
+
+GitHUb todo-ba adni:
+hangok hozzáadása
+merge sort még mehetne bele, vagy ami megtetszik

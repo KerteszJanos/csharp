@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Markup;
 
 namespace sortingAlgorithmsVisualizer_classLib.Model
 {
@@ -17,6 +19,7 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
 
         private int ComparisonCounter;
         private int ArrayAccesCounter;
+        private int ElapsedTimeCounter;
         #endregion
 
         #region constructors
@@ -87,12 +90,14 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
         {
             inputList = inputList.Trim();
 
-            //set default values
+            //set values to default
             list.Clear();
             ComparisonCounter = 0;
             OnComparisonCounterChanged(ComparisonCounter);
             ArrayAccesCounter = 0;
             OnArrayAccesCounterChanged(ArrayAccesCounter);
+            ElapsedTimeCounter = 0;
+            OnElapsedSecondsChanged(ElapsedTimeCounter);
 
             //initialize list
             if (inputList[0] == '[')
@@ -130,6 +135,7 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
             }
             OnListInitialised(list); // algorithmIsRunning = true; needs to be after this, bc we Investigate if an algorithm is running when check input format
             algorithmIsRunning = true;
+            OnAlgorithmIsRunningChanged(algorithmIsRunning);
             switch (sortingType)
             {
                 case "InsertionSort":
@@ -147,12 +153,13 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
                     break;
                 case "QuickSort":
                     await Task.Delay((int)(500 * sortingSpeed));
-                    QuickSort(list);
+                    await QuickSort(list);
                     break;
                 default:
                     break;
             }
             algorithmIsRunning = false;
+            OnAlgorithmIsRunningChanged(algorithmIsRunning);
         }
 
         public void SlowDown()
@@ -170,6 +177,12 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
                 sortingSpeed -= 0.1;
                 OnSortingSpeedChanged(sortingSpeed);
             }
+        }
+
+        public void timeGoesBy()
+        {
+            ElapsedTimeCounter++;
+            OnElapsedSecondsChanged(ElapsedTimeCounter);
         }
         #endregion
 
@@ -266,7 +279,7 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
             return inputinputArray;
         }
 
-        private async void QuickSort(List<int> inputArray)
+        private async Task<int> QuickSort(List<int> inputArray)
         {
             async Task<List<int>> SortArray(List<int> array, int leftIndex, int rightIndex)
             {
@@ -331,6 +344,7 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
             }
             var result = await SortArray(inputArray, 0, inputArray.Count - 1);
             OnPivotChanged(-1);
+            return 0;
         }
 
         #endregion
@@ -343,6 +357,11 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
         public event EventHandler<int>? PivotChanged;
         public event EventHandler<string>? ComparisonCounterChanged;
         public event EventHandler<string>? ArrayAccesCounterChanged;
+        public event EventHandler<string>? ElapsedSecondsChanged;
+
+        //events for the App.xaml.cs
+        public event EventHandler<bool>? AlgorithmIsRunningChanged;
+
         private void onSortingTypeChanged(string sortingType)
         {
             SortingTypeChanged!.Invoke(this, sortingType);
@@ -370,6 +389,14 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
         private void OnArrayAccesCounterChanged(int value)
         {
             ArrayAccesCounterChanged!.Invoke(this, value.ToString());
+        }
+        private void OnElapsedSecondsChanged(int value)
+        {
+            ElapsedSecondsChanged!.Invoke(this, value.ToString());
+        }
+        private void OnAlgorithmIsRunningChanged(bool value)
+        {
+            AlgorithmIsRunningChanged!.Invoke(this, value);
         }
         #endregion
     }
