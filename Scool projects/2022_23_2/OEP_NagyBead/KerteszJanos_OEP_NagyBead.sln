@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33516.290
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KerteszJanos_OEP_NagyBead", "KerteszJanos_OEP_NagyBead\KerteszJanos_OEP_NagyBead.csproj", "{4789396B-496D-47AC-A0CC-3111D4394B9C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{88C2455C-079D-416F-B867-0427A7F748B7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4789396B-496D-47AC-A0CC-3111D4394B9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4789396B-496D-47AC-A0CC-3111D4394B9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4789396B-496D-47AC-A0CC-3111D4394B9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4789396B-496D-47AC-A0CC-3111D4394B9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88C2455C-079D-416F-B867-0427A7F748B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88C2455C-079D-416F-B867-0427A7F748B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88C2455C-079D-416F-B867-0427A7F748B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88C2455C-079D-416F-B867-0427A7F748B7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9879E008-74FA-4B5E-9D4D-A5B77EAB9F72}
+	EndGlobalSection
+EndGlobal

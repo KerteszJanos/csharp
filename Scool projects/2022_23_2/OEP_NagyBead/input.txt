@@ -1,0 +1,10 @@
+C;Jani kft
+S;Kezdo;Bela
+S;Gyakorlott;Sanyi
+S;Torzstag;Attila
+T;Level utca 3;
+T;Danko utca 10;
+K;Nyerges;ABC-123;50;100
+K;Nyerges;ABC-223;50;100
+K;Fulkes;CBA-123;50;100
+K;Fulkes;CBA-223;50;100
