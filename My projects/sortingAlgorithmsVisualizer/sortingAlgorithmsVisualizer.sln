@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34525.116
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sortingAlgorithmsVisualizer_wpf", "sortingAlgorithmsVisualizer_wpf\sortingAlgorithmsVisualizer_wpf.csproj", "{178451D0-60BC-4CB3-A650-5AB241C7DAA3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "sortingAlgorithmsVisualizer_wpf", "sortingAlgorithmsVisualizer_wpf\sortingAlgorithmsVisualizer_wpf.csproj", "{178451D0-60BC-4CB3-A650-5AB241C7DAA3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sortingAlgorithmsVisualizer_classLib", "sortingAlgorithmsVisualizer_classLib\sortingAlgorithmsVisualizer_classLib.csproj", "{59ACED5D-8AFC-4EEC-82AC-263C9882EDE8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "sortingAlgorithmsVisualizer_classLib", "sortingAlgorithmsVisualizer_classLib\sortingAlgorithmsVisualizer_classLib.csproj", "{59ACED5D-8AFC-4EEC-82AC-263C9882EDE8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sortingAlgorithmsVisualizer_UnitTests", "sortingAlgorithmsVisualizer_UnitTests\sortingAlgorithmsVisualizer_UnitTests.csproj", "{D01E6349-98BC-498C-A86A-86E3F1D5DB23}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{59ACED5D-8AFC-4EEC-82AC-263C9882EDE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59ACED5D-8AFC-4EEC-82AC-263C9882EDE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59ACED5D-8AFC-4EEC-82AC-263C9882EDE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D01E6349-98BC-498C-A86A-86E3F1D5DB23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D01E6349-98BC-498C-A86A-86E3F1D5DB23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D01E6349-98BC-498C-A86A-86E3F1D5DB23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D01E6349-98BC-498C-A86A-86E3F1D5DB23}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

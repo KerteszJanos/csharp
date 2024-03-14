@@ -12,10 +12,10 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
     {
         #region properties/fields
         public List<int> list { get; set; }
-        private string sortingType; //set InsertionSort default in ctor
+        public string sortingType { get; set; } //set InsertionSort default in ctor
         public bool algorithmIsRunning { get; set; }
 
-        private double sortingSpeed { get; set; }
+        public double sortingSpeed { get; set; }
 
         private int ComparisonCounter;
         private int ArrayAccesCounter;
@@ -50,7 +50,7 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
                     {
                         return false;
                     }
-                    return int.TryParse(splittedList[0].Substring(1), out int fst) && int.TryParse(splittedList[1].Substring(0, splittedList[1].Length - 1), out int snd) && fst < snd;
+                    return int.TryParse(splittedList[0].Substring(1), out int fst) && int.TryParse(splittedList[1].Substring(0, splittedList[1].Length - 1), out int snd) && fst <= snd;
                     //                                /\                                                /\                                                                       /\
                     //              returns true if the first string is an int       returns true if the first string is an int                      returns true if the first string is smaller than the second
                 }
@@ -78,7 +78,14 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
                 }
                 i++;
             }
-            return (i <= inputList.Length) && !isComma;
+            if (i == inputList.Length)
+            {
+                return !isComma;
+            }
+            else
+            {
+                return false;
+            }
         }
         public void SetAlgorithmTo(string sortingType)
         {
@@ -279,7 +286,7 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
             return inputinputArray;
         }
 
-        private async Task<int> QuickSort(List<int> inputArray)
+        private async Task<List<int>> QuickSort(List<int> inputArray)
         {
             async Task<List<int>> SortArray(List<int> array, int leftIndex, int rightIndex)
             {
@@ -340,11 +347,10 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
                 ComparisonCounter++;
                 OnComparisonCounterChanged(ComparisonCounter);
 
+                OnPivotChanged(-1); //give the infromation we finished our sorting
                 return array;
             }
-            var result = await SortArray(inputArray, 0, inputArray.Count - 1);
-            OnPivotChanged(-1);
-            return 0;
+            return await SortArray(inputArray, 0, inputArray.Count - 1); ;
         }
 
         #endregion

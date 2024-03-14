@@ -52,6 +52,7 @@ namespace sortingAlgorithmsVisualizer_wpf.ViewModel
         public MainViewModel(MainModel model) //dependency injection
         {
             _model = model;
+
             _model.SortingTypeChanged += modelSortingTypeChanged;
             modelSortingTypeAsMenuItemHeader = "Choose sorting algorythm (InsertionSort)";
             OnPropertyChanged(nameof(modelSortingTypeAsMenuItemHeader));
@@ -62,18 +63,23 @@ namespace sortingAlgorithmsVisualizer_wpf.ViewModel
             _model.SortingSpeedChanged += modelSortingSpeedChanged;
             modelSortingSpeed = 1;
             modelSortingSpeedLabel = "1.0x";
+
             _model.PivotChanged += modelPivotChanged;
             _model.ComparisonCounterChanged += modelComparisonCounterChanged;
-            _model.ArrayAccesCounterChanged += modelArrayAccesCounterChanged;
             modelComparisons = "Comparisons: 0";
             OnPropertyChanged(nameof(modelComparisons));
+
+            _model.ArrayAccesCounterChanged += modelArrayAccesCounterChanged;
             modelArrayAcces = "Array acces: 0";
             OnPropertyChanged(nameof(modelArrayAcces));
+
             arrayInputTextboxContent = "";
             OnPropertyChanged(nameof(arrayInputTextboxContent));
+
             modelElapsedSeconds = "Elapsed seconds: 0";
             OnPropertyChanged(nameof(modelElapsedSeconds));
             _model.ElapsedSecondsChanged += modelElapsedSecondsChanged;
+
 
             StartAlgorithmCommand = new DelegateCommand(StartAlgorithm, CanStartAlgorithm);
             SetAlgorithmToCommand = new DelegateCommand(SetAlgorithmTo, CanSetAlgorithmTo);
