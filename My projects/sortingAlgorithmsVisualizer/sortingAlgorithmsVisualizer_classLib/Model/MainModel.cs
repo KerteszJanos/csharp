@@ -19,7 +19,7 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
 
         private int ComparisonCounter;
         private int ArrayAccesCounter;
-        private int ElapsedTimeCounter;
+        public int ElapsedTimeCounter { get; set; }
         #endregion
 
         #region constructors
@@ -146,7 +146,6 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
             switch (sortingType)
             {
                 case "InsertionSort":
-                    OnSortingSpeedChanged(sortingSpeed);
                     await Task.Delay((int)(500 * sortingSpeed));
                     await InsertionSort(list);
                     break;
