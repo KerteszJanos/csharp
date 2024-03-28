@@ -349,7 +349,7 @@ namespace sortingAlgorithmsVisualizer_classLib.Model
                 OnPivotChanged(-1); //give the infromation we finished our sorting
                 return array;
             }
-            return await SortArray(inputArray, 0, inputArray.Count - 1); ;
+            return await SortArray(inputArray, 0, inputArray.Count - 1);
         }
 
         #endregion
