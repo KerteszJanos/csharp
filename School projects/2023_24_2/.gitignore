@@ -1,0 +1,191 @@
+# Visual Studio IDE files
+.vs/
+*.vspscc
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Visual Studio Code files
+.vscode/
+
+# NuGet
+*.nuget.props
+*.nuget.targets
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+
+# MSTest test Results
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# NUNIT
+*.VisualState.xml
+TestResult.xml
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# ClickOnce deployment
+publish/
+
+# Publish Web projects
+*.publish.xml
+*.publishproj
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# Solution files
+*.sln
+
+# Project files
+#*.csproj
+*.vbproj
+*.vcxproj
+*.vcproj
+*.dbproj
+*.shproj
+*.fsproj
+*.pyproj
+*.njsproj
+*.iotproj
+*.manifest
+*.settings
+*.sage
+*.sln.docstates
+
+# ReSharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# Rider
+.idea/
+*.sln.iml
+
+# User-specific files
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+
+# Mono-specific files
+mono_crash.*
+
+# Xamarin-specific files
+*.apk
+*.ap_
+
+# Office Temp Files
+~$*
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Visual Studio profiler
+*.psess
+*.vsp
+*.vspx
+*.sap
+*.ipch
+*.vc.db
+*.pdb
+*.opendb
+
+# Visual Studio Code
+.vscode/
+
+# Jetbrains Rider
+.idea/
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+*.exe
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+
+# Kernel Module Compile Results
+*.ko
+*.ko.unsigned
+*.symvers
+*.order
+
+# Symbol files
+*.sym
+*.bin
+#*.map
+
+# Documentation
+doc/
+docs/
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+[Dd]esktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+# End of Visual Studio gitignore
